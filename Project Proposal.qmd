@@ -1,0 +1,236 @@
+---
+title: "Project Proposal"
+author: Aiden Cathcart, Jiaqi Lei, Krishaant Pathmanathan, and Zane Williams
+format:
+  pdf:
+    toc: true
+    colorlinks: true
+    tbl:
+      caption-location: top
+      alignment: center
+      header-background: gray!20
+      
+toc: true
+fig-cap-location: top
+execute: 
+  echo: false
+  warning: false
+smooth-scroll: true
+editor: visual
+---
+
+```{r}
+#| include: false
+source("DataCleaner.R")
+```
+
+# **Research Question**
+
+Does air quality have a statistically significant effect on income inequality within Canadian Metropolitan Areas?
+
+# **Proposal Summary**
+
+This research project seeks to understand the relationship between air quality and income inequality within Canadian Census Metropolitan Areas (CMAs). Specifically, we aim to determine whether higher Air Quality Health Index (AQHI) scores are correlated with higher estimated Gini Coefficients within a CMA. By establishing this relationship, we seek to contribute to broader understandings of environmental justice and socioeconomic disparities in Canadian urban spaces. This project is within the scope of Track 3: Applied Urban and Social Economics Research.
+
+# **Methodology**
+
+## Data Collection and Variables 
+
+All data used in this project will be collected from three sources:
+
+1.  Environment and Climate Change Canada’s observation data from the Air Quality Health Index (AQHI) program;
+
+2.  Statistics Canada’s 2021 Census boundary files;
+
+3.  and Environics Analytics’ 2024 Demographic Estimates & Projections obtained through SimplyAnalytics and derived from Statistics Canada’s 2021 data.
+
+All data will be organized by CMA. As hourly AQHI measurements are only available from December 2024 to February 2025, we will only use numerical data from 2024. Spatial data will be sourced from 2021: CMA bounds have not changed since Statistics Canada’s 2021 census.
+
+Spatial data will be used to attribute AQHI measurement stations to their corresponding CMA. Not all AQHI measurement stations are located within a CMA, and not all CMAs contain an AQHI measurement station—these incomplete measurements will be excluded from our data. Notably, Quebec does not allow for the release AQHI measurement observations. In the event that a CMA contains multiple AQHI measurement stations, their daily averages will be combined.
+
+From these data sources, we will extract the following dependent, independent, and control variables:
+
+### Dependent Variable: Estimated Gini Coefficient
+
+The CMA demographic data does not include a measurement of income inequality. We will estimate the Gini Coefficient for each CMA population using the following 2024 demographic data:
+
+1.  $I_0$: Median Household Income
+
+2.  $I_1$: Percent of Households which have a Household Income of \$100,000 or higher
+
+3.  $I_2$: Percent of Households with a Household Income of \$100,000 or higher which have a Household Income of \$200,000 or higher
+
+4.  $I_3$: Percent of Households with a Household Income of \$200,000 or higher which have a Household Income of \$300,000 or higher
+
+The Gini Coefficient is a measure of income inequality $G \in [0,1]$, with $G=0$ representing perfect income equality and $G=1$ representing maximum income inequality. We will estimate the Gini Coefficient as follows:
+
+Let us first standardize our data. Let $N$ represent the number of CMAs. For each CMA $k | k \in [1,N]$, we will expand our income vector $I_k$ to a matrix $IP_k$ which contains median-adjusted income and income percentile.
+
+$$
+IP_k =\begin{bmatrix}0 & 0.5 & \frac{I_1}{100} & \frac{I_1 I_2}{10000} & \frac{I_1 I_2 I_3}{1000000} \\0 & I_0 & \frac{100000}{I_0} & \frac{200000}{I_0} & \frac{300000}{I_0}\end{bmatrix}
+$$
+
+The first row of $IP_k$ represents the percentile of a given median-adjusted income value with terms $x_n$. The second row of $IP_k$ represents the median-adjusted income value with terms $y_n$.
+
+We now need to approximate the Lorenz curve for k. This will be completed using the Lagrange Interpolation Polynomial, which is
+
+$$
+P(x) = \sum_{n=0}^4y_nL_n(x)
+$$
+
+where $L_n(x)$ are the Lagrange basis polynomials of the form
+
+$$
+L_n(x) = \prod_{j=0,j\neq n}^{4} \frac{x-x_j}{x_n-x_j}
+$$
+
+We also have a median-adjusted line of income equality of the form $E(x) = \frac{y_5}{x_5}x$.
+
+Our Gini coefficient can now be estimated by:
+
+$$
+G(IP_k) = \frac{\int_{0}^{x_5} \left( E(x) - P(x) \right) \, dx}{\int_{0}^{x_5} E(x) \, dx}
+$$
+
+We will numerically approximate these integrals using Simpson’s Method.
+
+### Independent Variable of Interest: Air Quality Health Index (AQHI)
+
+The AQHI is a composite index which measures various air pollution levels (PM2.5, PM10, NO₂, CO, O₃, SO₂). Higher AQHI values indicate worse air quality. An AQHI value higher than 3 represents a risk to public health. While the AQHI is typically presented to the public as an integer value, hourly measurements are reported with a precision of two decimal places. We will interpret a CMA’s AQHI data in one of two ways:
+
+1.  Average daily AQHI average;
+
+2.  or Percentage of daily AQHI averages with a value greater than 3.
+
+### Additional Regressors and Control Variables
+
+Our control variables are sourced from Environics Analytics’ 2024 Demographic Estimates & Projections. The following demographic and economic variables have been chosen to minimize Omitted Variable Bias. Our objective is to control for any correlation between our independent variable of interest and our error term to uphold Conditional Mean Independence. Adding sufficient control variables will isolate the effect of air quality on income.
+
+#### Demographic Factors:
+
++----------------------------------------------------+----------------------------------------------------------------------------------------+--------------------------------------------+
+| Variable & Purpose                                 | Key Data & Findings                                                                    | References                                 |
++====================================================+========================================================================================+============================================+
+| \% Male & Female Population by Age                 | \- Gender ratio in manufacturing areas: Higher proportion of males                     | Varechova et al., 2016                     |
+|                                                    |                                                                                        |                                            |
+| -   Account for gender-based income disparities    | \- National gender ratio: Stable (47.3%-52.6%), average \~50%                          |                                            |
++----------------------------------------------------+----------------------------------------------------------------------------------------+--------------------------------------------+
+| \% Population by Visible Minority Status           | \- Minority distribution: \<22.4% in 78% of regions; \>50% in some                     | American Lung Association, 2023; WHO, 2022 |
+|                                                    |                                                                                        |                                            |
+| -   Assess racial wealth disparities               | \- Citizenship: 85.6% Canadian citizens                                                |                                            |
+|                                                    |                                                                                        |                                            |
+|                                                    | \- Higher % of visible minorities near industrial areas                                |                                            |
++----------------------------------------------------+----------------------------------------------------------------------------------------+--------------------------------------------+
+| \% Married or Cohabiting                           | \- Married/cohabiting families: \>50% in most regions                                  | Pais et al., 2014                          |
+|                                                    |                                                                                        |                                            |
+| -   Control for effect of household size           | \- Single-parent families often located near high-pollution areas due to affordability |                                            |
++----------------------------------------------------+----------------------------------------------------------------------------------------+--------------------------------------------+
+| \% Knowledge of Official Languages                 | \- English: Bimodal distribution (main peak 56%, secondary 81%)                        | ———                                        |
+|                                                    |                                                                                        |                                            |
+| -   Evaluate language barriers                     | \- French: \<15.1% outside Quebec                                                      |                                            |
+|                                                    |                                                                                        |                                            |
+|                                                    | \- Non-official languages (e.g., Chinese, Hindi): \<13%                                |                                            |
++----------------------------------------------------+----------------------------------------------------------------------------------------+--------------------------------------------+
+| ​% First-Generation Immigrants                      | \- Majority age group: 39-45 years                                                     | ———                                        |
+|                                                    |                                                                                        |                                            |
+| -   Understand wealth accumulation and income gaps | \- Slight aging trend in population distribution                                       |                                            |
++----------------------------------------------------+----------------------------------------------------------------------------------------+--------------------------------------------+
+
+#### Economic & Employment Factors:
+
++---------------------------------------------------------+--------------------------------------------------------------------------------------------+--------------------------------------------------+
+| Variable & Purpose                                      | Key Data & Findings                                                                        | References                                       |
++=========================================================+============================================================================================+==================================================+
+| \% Household Income \>\$60K (After Tax)                 | \- Median income: 76K–95K (right-skewed)                                                   | PMC, 2023; Stockholm Environment Institute, 2023 |
+|                                                         |                                                                                            |                                                  |
+| -   Control regional wealth levels                      | \- High-emission industries in wealthy regions (e.g., Toronto: 20% of Canada’s GDP)        |                                                  |
++---------------------------------------------------------+--------------------------------------------------------------------------------------------+--------------------------------------------------+
+| \% Labour Force Employed                                | \- Employment rate: 51.8%–60.3%                                                            | ———                                              |
+|                                                         |                                                                                            |                                                  |
+| -   Account for job market conditions                   | \- Structural unemployment in some regions                                                 |                                                  |
++---------------------------------------------------------+--------------------------------------------------------------------------------------------+--------------------------------------------------+
+| \% Population (15+ Years) Without Education Credentials | \- 13.8%–20.1% of labor force lack higher education                                        | ———                                              |
+|                                                         |                                                                                            |                                                  |
+| -   Assess education’s impact on income                 | \- Limited career choices for this group.                                                  |                                                  |
+|                                                         |                                                                                            |                                                  |
+|                                                         | \- Manufacturing/mining workers often do not have high rates of university-level education |                                                  |
++---------------------------------------------------------+--------------------------------------------------------------------------------------------+--------------------------------------------------+
+
+## Regression Model
+
+Our regression will have the form:
+
+$$
+\begin{aligned}
+\text{Gini Coefficient} &= \beta_0 + \beta_1 (\text{AQHI}) + \beta_2 (\text{Gender Income Disparity}) + \beta_3 (\text{Visible Minority Status}) + \\
+&\quad \beta_4 (\text{Marital Status}) + \beta_5 (\text{Language Knowledge}) + \beta_6 (\text{Generation Status}) + \\
+&\quad \beta_7(\text{High Income Population}) + \beta_8(\text{Employment Rate}) + \beta_9(\text{No Education Credentials}) + \epsilon
+\end{aligned}
+$$
+
+# **Descriptive Statistics**
+
+```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%", fig.align = "center", fig.cap = "Canadian Census Metropolitan Areas | Percentage of Days with AQHI > 3 (2024)", fig.cap.position ="bottom"}
+ggplot() +
+  geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
+  geom_sf(data = d, aes(fill = percent_high_AQHI), color = "black", size = 0.2) +  #color by AQHI percentage
+  scale_fill_viridis_c(name = "% High AQHI Days", option = "magma") + #color scale
+  theme_minimal(base_family = "serif") + 
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
+  labs(title = "Percentage of Days with AQHI > 3 by Census Metropolitan Area (2024)", 
+       subtitle = "Higher values indicate more frequent poor air quality.", caption = "Data sources: Statistics Canada, Environment and Climate Change Canada") +
+  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
+```
+
+```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%", fig.align = "center", fig.cap = "Canadian Census Metropolitan Areas | Average AQHI (2024)", fig.cap.position ="bottom"}
+ggplot() +
+  geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
+  geom_sf(data = d, aes(fill = average_AQHI), color = "black", size = 0.2) +  #color by AQHI percentage
+  scale_fill_viridis_c(name = "Average AQHI", option = "plasma") + #color scale
+  theme_minimal(base_family = "serif") + 
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
+  labs(title = "Average AQHI by Census Metropolitan Area", 
+      , caption = "Data sources: Statistics Canada, Environment and Climate Change Canada") +
+  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
+```
+
+```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%", fig.align = "center", fig.cap = "Canadian Census Metropolitan Areas | Median Household Income (2024)", fig.cap.position ="bottom"}
+ggplot() +
+  geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
+  geom_sf(data = d, aes(fill = `Households by Income (Current Year) | Median Household Income (Current Year $), 2024`), color = "black", size = 0.2) +  #color by median income
+  scale_fill_viridis_c(name = "Median Household Income", option = "viridis") + #color scale
+  theme_minimal(base_family = "serif") + 
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
+  labs(title = "Median Household Income by Census Metropolitan Area", 
+       caption = "Data sources: Statistics Canada, Environics Analytics") +
+  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
+```
+
+# **References**
+
+American Lung Association. (2023). *Who is at risk from air pollution? Clean Air - Outdoors.* <https://www.lung.org/clean-air/outdoors/who-is-at-risk/disparities>
+
+Environics Analytics. (2024). *Households by income (current year). Demographic estimates & projections (DemoStats).* The Centre for Spatial Economics. Retrieved from SimplyAnalytics.
+
+Environment and Climate Change Canada. (2025). *Air Quality Health Index (AQHI) data.* MSC Data Mart. Retrieved from [https://dd.weather.gc.ca/air_quality/aqhi/\
+](https://dd.weather.gc.ca/air_quality/aqhi/)Documentation: <https://eccc-msc.github.io/open-data/msc-data/aqhi/readme_aqhi-datamartcsv_en/>
+
+Environment and Climate Change Canada. (2025). *AQHI station data (GeoJSON).* MSC Data Mart. Retrieved from <https://collaboration.cmc.ec.gc.ca/cmc/cmos/public_doc/msc-data/aqhi/aqhi_station.geojson>
+
+Guivarch, C., Méjean, A., & Taconet, N. (2021). Climate change and inequality: Challenges and opportunities. *IMF Finance & Development*, 58(3). <https://www.imf.org/en/Publications/fandd/issues/2021/09/climate-change-and-inequality-guivarch-mejean-taconet>
+
+National Library of Medicine. (2023). *The impact of environmental pollution on human health.* PMC9960154. <https://pmc.ncbi.nlm.nih.gov/articles/PMC9960154/>
+
+Pais, J., South, S. J., & Crowder, K. D. (2014). The unequal distribution of environmental hazards: Race, class, and the impact of residential segregation. *Journal of Marriage and Family*, 76(2), 301–318. <https://doi.org/10.1111/jomf.12355>
+
+Stockholm Environment Institute. (2023a). *Income inequality and emissions inequality: Exploring the links.* PMC10363163. <https://pmc.ncbi.nlm.nih.gov/articles/PMC10363163/>
+
+Stockholm Environment Institute. (2023b). *Income inequality and emissions inequality: A conversation.* <https://www.sei.org/features/qa-income-inequality-emissions-inequality/>
+
+Statistics Canada. (2021). *Boundary files, 2021 census.* Geography. Retrieved from <https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?year=21>
+
+Statistics Canada. (2021). *PRUID reference.* Retrieved from <https://www12.statcan.gc.ca/census-recensement/2021/geo/ref/domain-domaine/index2021-eng.cfm?lang=e&id=PRUID>
+
+Varechova, S., Joppa, P., Miko, M., & Michalik, J. (2016). Physiological responses to low-level exposure to particulate matter: A systematic review. *Frontiers in Physiology*, 7(54). <https://doi.org/10.3389/fphys.2016.00054>
+
+World Health Organization. (2022). *Equity impacts of air quality and health.* Environment, Climate Change, and Health. <https://www.who.int/teams/environment-climate-change-and-health/air-quality-and-health/health-impacts/equity-impacts>

@@ -1,0 +1,252 @@
+---
+title: "Data Cleaning"
+editor: visual
+title-block-banner: "darkgreen"
+title-block-banner-color: "white"
+format: 
+ html: 
+  embed-resources: true
+toc: true
+fig-cap-location: top
+execute: 
+  echo: true
+  warning: false
+smooth-scroll: true
+---
+
+## Data Cleaning
+
+Our research question is "Is there a correlation between Air Quality Health Index and income inequality in Canadian metropolitan areas?"
+
+We've collected our Air Quality Health Index (AQHI) data. We now need to identify the Census Metro Areas (CMAs) associated with each Station ID.
+
+First, let's change our AQHI data to refer to a city rather than a station code!
+
+```{r}
+library(tidyverse) #importing libraries, not all used yet
+library(gtools)
+library(modelsummary)
+library(ggeffects)
+library(data.table)
+library(sf)
+library(jsonlite)
+library(data.table)
+library(tmap)
+library(ggplot2)
+library(terra)
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
+main_dir <- "C:/Users/zaneb/Documents/Vault/UBC/24W/Term 2/ECON 326/FinalProject" #equivalent to getwd(), saved for ease
+
+regions <- c("atl", "ont", "pnr", "pyr") #the four areas of data collection in AQHI files
+
+d_AQHI <- lapply(setNames(regions, regions), function(region) { #lapply applies a function to a list
+  dir_path <- file.path(main_dir, "Data/AQHI", region) #folder of data
+  files <- list.files(path = dir_path, pattern = "\\.csv$", full.names = TRUE) #list of files in the folder
+  rbindlist(lapply(files, fread), use.names = TRUE, fill = TRUE) #reading all of the folders, then binding them together under separate lists in d_AQHI
+})
+
+naps <- st_read(file.path(main_dir, "Data/aqhi_station.geojson")) #read the geojson guide to the different research locations
+```
+
+```{r}
+valid_cgndb <- unlist(lapply(regions, function(region){
+  setdiff(names(d_AQHI[[region]]), c("Date", "Hour (UTC)")) #generate a list of cgndb values in d_AQHI
+}))
+```
+
+We need to adjust that data to correspond with different CMAs.
+
+```{r}
+CMA <- st_read(file.path(main_dir, "Data/Spatial/CMA_shape.shp")) #import CMA
+
+PR <- st_read(file.path(main_dir, "Data/Spatial/PR_shape.shp")) #import PR
+PR <- st_simplify(PR, dTolerance = 10000) #simplify PR
+
+CMA <- CMA |> filter(PRUID != "24") #filter out QC
+
+naps <- st_transform(naps, 3347) #CRS correction
+```
+
+```{r}
+naps_CMA <- naps |> filter(lengths(st_intersects(naps, CMA)) > 0) #create a naps dataframe that includes only sites within a CMA
+naps_CMA <- st_join(naps_CMA, CMA["CMANAME"], join = st_intersects) #add CMA value
+
+naps_df <- as.data.table(naps_CMA)[, .(cgndb, CMANAME, name, longitude = st_coordinates(geometry)[,1], latitude = st_coordinates(geometry)[,2])] #prep for merge, grab name & longitude and latitude values
+
+naps_df <- naps_df[naps_df$cgndb %in% valid_cgndb] #remove irrelevant stations
+
+naps_df[, name := lapply(name, function(x) fromJSON(x)$en)] #adjust names to english
+
+cgndb_key <- setNames(naps_df$name, naps_df$cgndb) #create a key of place names and cgndb values
+```
+
+```{r}
+#for(region in regions){
+ # loc_names <- valid_cgndb[valid_cgndb %in% names(d_AQHI[[region]])] #create a list of names from the region
+  #loc_key <- as.character(cgndb_key[loc_names]) #add the key to the list, make it chr (avoiding bug)
+  #setnames(d_AQHI[[region]], loc_names, loc_key) #set new names for d_AQHI!
+#}
+```
+
+```{r}
+placenames <- unlist(lapply(regions, function(region){
+  setdiff(names(d_AQHI[[region]]), c("Date", "Hour (UTC)")) #making a list of cgndb now in d_AQHI
+}))
+```
+
+Let's map this data.
+
+```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%"}
+ggplot() +
+  geom_sf(data = PR, fill = "white", color = "black") + #PR shapes
+  geom_sf(data = CMA, aes(fill = "Census Metropolitan Areas"), color = "black") + #CMA shapes
+  geom_sf(data = naps_CMA, aes(color = "AQHI Measuring Stations"), size = 1.2) + #naps points
+  scale_fill_manual(name = "Regions",
+                    values = c("Census Metropolitan Areas" = "lightblue")) +  
+  scale_color_manual(name = "Locations",
+                     values = c("AQHI Measuring Stations" = "red")) + 
+  theme_minimal(base_family = "serif") +
+  theme(plot.title = element_text(hjust = 0.5)) + #center title
+  labs(title = "Map of Canadian Metropolitan Areas and AQHI Measuring Stations",
+       caption = "Data source: StatCan") +
+  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000)) #set bounds to make sure map isn't too small
+```
+
+Now let's import our census data.
+
+```{r}
+d_Census <- fread(file.path(main_dir, "Data/Census/CMA_Data.csv")) #import census data
+```
+
+We now need to merge all of our data together into one clear dataframe.
+
+```{r}
+CMA_naps <- CMA |> filter(lengths(st_intersects(CMA, naps)) > 0) #create a CMA dataframe that includes only sites with a naps
+
+CMA_nonaps <- CMA |> filter(lengths(st_intersects(CMA, naps)) == 0) #create a CMA with sites that don't have naps
+```
+
+```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%"}
+ggplot() +
+  geom_sf(data = PR, fill = NA, color = "black") + #PR shapes
+  geom_sf(data = CMA_nonaps, aes(fill = "No AQHI Measurements"), color = "black") + #CMA w/o naps
+  geom_sf(data = CMA_naps, aes(fill = "Has AQHI Measurements"), color = "black") + #CMA w/ naps
+  scale_fill_manual(name = "CMA Category",
+                    values = c("No AQHI Measurements" = "lightblue", 
+                               "Has AQHI Measurements" = "red")) +
+  theme_minimal(base_family = "serif") + #theme, font
+  theme(plot.title = element_text(hjust = 0.5)) + #center title
+  labs(title = "Map of Canadian Metropolitan Areas with AQHI Readings", 
+       caption = "Data source: StatCan") +
+  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000)) #scale
+```
+
+```{r}
+naps_CMA <- st_join(naps_CMA, CMA_naps["CMAUID"], join = st_intersects)#add CMAID values to naps
+
+d_CMA <- as.data.table(naps_CMA)[, .(cgndb, CMAUID, CMANAME)] #short df of cdngb values with CMA locations & ID
+
+aqhi_cgndb <- unlist(lapply(regions, function(region){
+  setdiff(names(d_AQHI[[region]]), c("Date", "Hour (UTC)")) #making a list of placenames now in d_AQHI
+}))
+```
+
+```{r}
+d_AQHI <- rbindlist(d_AQHI, use.names = TRUE, fill = TRUE, idcol = "region") #break apart regional grouping
+```
+
+```{r}
+d_AQHI_l <- melt(d_AQHI, id.vars = c("region", "Date", "Hour (UTC)"), variable.name = "Station", value.name = "AQHI") #shift from wide to long
+```
+
+```{r}
+d <- d_AQHI_l |>
+  inner_join(d_CMA, by = c("Station" = "cgndb")) #add CMA data: stations will be labelled by CMA
+```
+
+```{r}
+d <- d |>
+  group_by(CMAUID, CMANAME, Date) |>
+  summarise(mean_AQHI = mean(AQHI, na.rm = TRUE), .groups = "drop") #regroup by average daily AQHI for a CMA at a given day
+```
+
+```{r}
+d <- d |>
+  group_by(CMAUID, CMANAME) |> #group by CMA
+  summarise(
+    total_days = n(), #total days with data
+    high_AQHI_days = sum(mean_AQHI > 3, na.rm = TRUE), #number of days with high AQHI
+    percent_high_AQHI = (high_AQHI_days/total_days)*100, #% of days with high AQHI
+    average_AQHI = sum(mean_AQHI, na.rm = TRUE)/total_days #average of daily AQHI averages
+  )
+```
+
+```{r}
+d_Census <- d_Census |>
+  rename(CMAUID=`Census Metro Area ID`) #change for merge
+
+d_Census <- d_Census |>
+  mutate(CMAUID = str_pad(as.character(CMAUID), width = 3, side = "left", pad = "0")) #fix formatting
+```
+
+```{r}
+d <- d |>
+  left_join(d_Census, by = "CMAUID") #combine the census and AQHI data!
+```
+
+```{r}
+d <- d |>
+  left_join(CMA_naps, by = "CMAUID") |> #add the geographic data!
+  select(-CMANAME.y) |> 
+  rename(CMANAME = CMANAME.x) #removing doubled CMANAME column
+```
+
+```{r}
+d <- st_as_sf(d) #make d recognized as spatial again
+```
+
+```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%"}
+ggplot() +
+  geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
+  geom_sf(data = d, aes(fill = percent_high_AQHI), color = "black", size = 0.2) +  #color by AQHI percentage
+  scale_fill_viridis_c(name = "% High AQHI Days", option = "magma") + #color scale
+  theme_minimal(base_family = "serif") + 
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
+  labs(title = "Percentage of Days with AQHI > 3 by Census Metropolitan Area", 
+       subtitle = "Higher values indicate more frequent poor air quality.", caption = "Data source: StatCan") +
+  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
+```
+
+Now we can work with the data! Estimating the Gini Coefficient through the method set out in our proposal:
+
+```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%"}
+ggplot() +
+  geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
+  geom_sf(data = d, aes(fill = average_AQHI), color = "black", size = 0.2) +  #color by AQHI percentage
+  scale_fill_viridis_c(name = "Average AQHI", option = "plasma") + #color scale
+  theme_minimal(base_family = "serif") + 
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
+  labs(title = "Average AQHI by Census Metropolitan Area", 
+      , caption = "Data source: StatCan") +
+  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
+```
+
+```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%"}
+ggplot() +
+  geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
+  geom_sf(data = d, aes(fill = `Households by Income (Current Year) | Median Household Income (Current Year $), 2024`), color = "black", size = 0.2) +  #color by median income
+  scale_fill_viridis_c(name = "Median Household Income", option = "viridis") + #color scale
+  theme_minimal(base_family = "serif") + 
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
+  labs(title = "Median Household Income by Census Metropolitan Area", 
+       caption = "Data source: StatCan") +
+  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
+```
+
+```{r}
+print(colnames(d))
+```
