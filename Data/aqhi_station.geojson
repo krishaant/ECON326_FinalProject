@@ -1,0 +1,2847 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.6283,
+          47.6261
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Bathurst",
+          "fr": "Bathurst"
+        },
+        "cgndb": "DAFQX",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_DAFQX_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_DAFQX_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.175272,
+          47.082841
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Burin",
+          "fr": "Burin"
+        },
+        "cgndb": "AADCE",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_AADCE_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_AADCE_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.683511,
+          47.999336
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Campbellton",
+          "fr": "Campbellton"
+        },
+        "cgndb": "DAHEI",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_DAHEI_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_DAHEI_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.1347222222222,
+          46.2402777777778
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Charlottetown",
+          "fr": "Charlottetown"
+        },
+        "cgndb": "BAARG",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_BAARG_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_BAARG_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.922167,
+          48.9521
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Corner Brook",
+          "fr": "Corner Brook"
+        },
+        "cgndb": "AAEOU",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_AAEOU_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_AAEOU_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.294444,
+          47.377222
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Edmundston",
+          "fr": "Edmundston"
+        },
+        "cgndb": "DALZZ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_DALZZ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_DALZZ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.666667,
+          45.945278
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Fredericton",
+          "fr": "Fredericton"
+        },
+        "cgndb": "DAFMJ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_DAFMJ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_DAFMJ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.66,
+          48.93
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Grand Falls - Windsor",
+          "fr": "Grand Falls - Windsor"
+        },
+        "cgndb": "ABYRK",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_ABYRK_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_ABYRK_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.929722,
+          44.969167
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Greenwood",
+          "fr": "Greenwood"
+        },
+        "cgndb": "CAORH",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_CAORH_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_CAORH_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.57392,
+          44.64625
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Halifax",
+          "fr": "Halifax"
+        },
+        "cgndb": "CBUCG",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_CBUCG_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_CBUCG_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.590651,
+          44.647401
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Halifax Downtown",
+          "fr": "centre-ville d'Halifax"
+        },
+        "cgndb": "CAPHL",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_CAPHL_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_CAPHL_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.4952777777778,
+          45.0775
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Kentville",
+          "fr": "Kentville"
+        },
+        "cgndb": "CASWE",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_CASWE_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_CASWE_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.9365972,
+          52.9605694
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Labrador City",
+          "fr": "Labrador City"
+        },
+        "cgndb": "ABFQA",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_ABFQA_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_ABFQA_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.467261,
+          44.71338
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Lake Major",
+          "fr": "Lake Major"
+        },
+        "cgndb": "CATHI",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_CATHI_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_CATHI_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.4666999,
+          47.0041999
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Miramichi",
+          "fr": "Miramichi"
+        },
+        "cgndb": "DBEDJ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_DBEDJ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_DBEDJ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.803056,
+          46.115833
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Moncton",
+          "fr": "Moncton"
+        },
+        "cgndb": "DADHJ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_DADHJ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_DADHJ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -62.7091666666667,
+          45.6758333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Pictou",
+          "fr": "Pictou"
+        },
+        "cgndb": "CBDPK",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_CBDPK_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_CBDPK_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -61.356111,
+          45.6161111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Port Hawkesbury",
+          "fr": "Port Hawkesbury"
+        },
+        "cgndb": "CBELL",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_CBELL_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_CBELL_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.0388888888889,
+          45.2591666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Saint John",
+          "fr": "Saint John"
+        },
+        "cgndb": "DAEGW",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_DAEGW_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_DAEGW_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.058373,
+          45.079907
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "St. Andrews",
+          "fr": "St. Andrews"
+        },
+        "cgndb": "DAEBC",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_DAEBC_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_DAEBC_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -52.7252777777778,
+          47.5658333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "St. John's",
+          "fr": "St. John's"
+        },
+        "cgndb": "ABEFS",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_ABEFS_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_ABEFS_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -62.5833333333333,
+          46.4166666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "St. Peters Bay",
+          "fr": "St. Peters Bay"
+        },
+        "cgndb": "BAEMV",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_BAEMV_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_BAEMV_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.0,
+          46.45
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Summerside (Wellington)",
+          "fr": "Summerside (Wellington)"
+        },
+        "cgndb": "BADSZ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_BADSZ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_BADSZ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -60.1952777777778,
+          46.1380555555556
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Sydney",
+          "fr": "Sydney"
+        },
+        "cgndb": "CBLGX",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/atl/observation/realtime/xml/AQ_OBS_CBLGX_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/atl/forecast/realtime/xml/AQ_FCST_CBLGX_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.65,
+          45.4833333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Gatineau",
+          "fr": "Gatineau"
+        },
+        "cgndb": "EGLTT",
+        "path_to_current_observation": "",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/que/forecast/realtime/xml/AQ_FCST_EGLTT_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.65,
+          45.5166666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Montr\u00e9al",
+          "fr": "Montr\u00e9al"
+        },
+        "cgndb": "EHHUN",
+        "path_to_current_observation": "",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/que/forecast/realtime/xml/AQ_FCST_EHHUN_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2166666666667,
+          46.8166666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Quebec",
+          "fr": "Qu\u00e9bec"
+        },
+        "cgndb": "EHTWR",
+        "path_to_current_observation": "",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/que/forecast/realtime/xml/AQ_FCST_EHTWR_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6769699,
+          44.37124
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Barrie",
+          "fr": "Barrie"
+        },
+        "cgndb": "FAFFD",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FAFFD_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FAFFD_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.3697222,
+          44.2566666
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Belleville",
+          "fr": "Belleville"
+        },
+        "cgndb": "FEVJS",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEVJS_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEVJS_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7608333333333,
+          43.6883333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Brampton",
+          "fr": "Brampton"
+        },
+        "cgndb": "FALIF",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FALIF_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FALIF_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.25749,
+          43.1569444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Brantford",
+          "fr": "Brantford"
+        },
+        "cgndb": "FALJI",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FALJI_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FALJI_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8141666666667,
+          43.37
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Burlington",
+          "fr": "Burlington"
+        },
+        "cgndb": "FAMXK",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FAMXK_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FAMXK_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.12876,
+          42.43396
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Chatham",
+          "fr": "Chatham"
+        },
+        "cgndb": "FEUTC",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEUTC_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEUTC_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.7263889,
+          45.0263889
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Cornwall",
+          "fr": "Cornwall"
+        },
+        "cgndb": "FCCOT",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCCOT_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCCOT_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8927778,
+          45.2447222
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Dorset",
+          "fr": "Dorset"
+        },
+        "cgndb": "FAZKI",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FAZKI_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FAZKI_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.7563889,
+          43.3025
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Grand Bend",
+          "fr": "Grand Bend"
+        },
+        "cgndb": "FAYJG",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FAYJG_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FAYJG_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.22899,
+          43.53571
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Guelph",
+          "fr": "Guelph"
+        },
+        "cgndb": "FBKKK",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FBKKK_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FBKKK_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.935,
+          43.242778
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Hamilton",
+          "fr": "Hamilton"
+        },
+        "cgndb": "FEVNS",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEVNS_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEVNS_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.8418,
+          43.24504
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Hamilton Downtown",
+          "fr": "centre-ville de Hamilton"
+        },
+        "cgndb": "FBLJL",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FBLJL_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FBLJL_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.82235,
+          43.23039
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Hamilton Mountain",
+          "fr": "Hamilton Mountain"
+        },
+        "cgndb": "FBLKS",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FBLKS_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FBLKS_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9027778,
+          43.2644444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Hamilton West",
+          "fr": "Hamilton Ouest"
+        },
+        "cgndb": "FDCHU",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDCHU_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDCHU_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.4163888,
+          44.3066666
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Kingston",
+          "fr": "Kingston"
+        },
+        "cgndb": "FEVJR",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEVJR_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEVJR_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.4727778,
+          43.4186111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Kitchener",
+          "fr": "Kitchener"
+        },
+        "cgndb": "FEBWC",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEBWC_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEBWC_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.2325,
+          42.9674999
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "London",
+          "fr": "London"
+        },
+        "cgndb": "FCAEN",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCAEN_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCAEN_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9177778,
+          43.5055556
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Milton",
+          "fr": "Milton"
+        },
+        "cgndb": "FDGEM",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDGEM_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDGEM_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.6572222222222,
+          43.5855555555556
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Mississauga",
+          "fr": "Mississauga"
+        },
+        "cgndb": "FEAKO",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEAKO_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEAKO_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.4583333333333,
+          44.0580555555556
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Newmarket",
+          "fr": "Newmarket"
+        },
+        "cgndb": "FDGED",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDGED_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDGED_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.459167,
+          46.314444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "North Bay",
+          "fr": "North Bay"
+        },
+        "cgndb": "FCFUU",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCFUU_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCFUU_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7138888888889,
+          43.4563888888889
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Oakville",
+          "fr": "Oakville"
+        },
+        "cgndb": "FCGKZ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCGKZ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCGKZ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8572222222222,
+          43.9005555555556
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Oshawa",
+          "fr": "Oshawa"
+        },
+        "cgndb": "FDMOP",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDMOP_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDMOP_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6769444444444,
+          45.4344444444445
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Ottawa",
+          "fr": "Ottawa"
+        },
+        "cgndb": "FEVNT",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEVNT_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEVNT_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0361111,
+          45.3538889
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Parry Sound",
+          "fr": "Parry Sound"
+        },
+        "cgndb": "FDSUS",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDSUS_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDSUS_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.3333333,
+          44.3011111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Peterborough",
+          "fr": "Peterborough"
+        },
+        "cgndb": "FDGEJ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDGEJ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDGEJ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.2108334,
+          42.6663888
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Port Stanley",
+          "fr": "Port Stanley"
+        },
+        "cgndb": "FCIBD",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCIBD_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCIBD_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3177777,
+          42.9813889
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Sarnia",
+          "fr": "Sarnia"
+        },
+        "cgndb": "FEARV",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEARV_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEARV_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.3469444,
+          46.5588888
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Sault Ste. Marie",
+          "fr": "Sault Ste. Marie"
+        },
+        "cgndb": "FDZCP",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDZCP_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDZCP_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2533,
+          43.16544
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "St. Catharines",
+          "fr": "St. Catharines"
+        },
+        "cgndb": "FDJFN",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDJFN_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDJFN_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.9775,
+          46.5011111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Sudbury",
+          "fr": "Sudbury"
+        },
+        "cgndb": "FCTOV",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCTOV_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCTOV_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.2677778,
+          48.4013889
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Thunder Bay",
+          "fr": "Thunder Bay"
+        },
+        "cgndb": "FCWFX",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCWFX_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCWFX_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5444444,
+          44.2669444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Tiverton",
+          "fr": "Tiverton"
+        },
+        "cgndb": "FCWOV",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCWOV_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCWOV_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3733333333333,
+          43.7416666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Toronto",
+          "fr": "Toronto"
+        },
+        "cgndb": "FEUZB",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FEUZB_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FEUZB_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3969444,
+          43.6758333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Toronto Downtown",
+          "fr": "centre-ville de Toronto"
+        },
+        "cgndb": "FCWYG",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCWYG_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCWYG_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.2308334,
+          43.7558333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Toronto East",
+          "fr": "Toronto Est"
+        },
+        "cgndb": "FDQBU",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDQBU_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDQBU_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.41026,
+          43.76205
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Toronto North",
+          "fr": "Toronto Nord"
+        },
+        "cgndb": "FDQBX",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDQBX_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDQBX_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.56589,
+          43.71823
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Toronto West",
+          "fr": "Toronto Ouest"
+        },
+        "cgndb": "FCKTB",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCKTB_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCKTB_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.9936111111111,
+          42.3022222222222
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Windsor",
+          "fr": "Windsor"
+        },
+        "cgndb": "FDEGT",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDEGT_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDEGT_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.99182,
+          42.3081
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Windsor Downtown",
+          "fr": "centre-ville de Windsor"
+        },
+        "cgndb": "FDATE",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FDATE_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FDATE_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0594444,
+          42.2830556
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Windsor West",
+          "fr": "Windsor Ouest"
+        },
+        "cgndb": "FCNJT",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/ont/observation/realtime/xml/AQ_OBS_FCNJT_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/ont/forecast/realtime/xml/AQ_FCST_FCNJT_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0141667,
+          51.2922222
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Airdrie",
+          "fr": "Airdrie"
+        },
+        "cgndb": "IAQFR",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAQFR_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAQFR_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.058333,
+          61.108333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Arviat",
+          "fr": "Arviat"
+        },
+        "cgndb": "OATSD",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_OATSD_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_OATSD_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.9522222222222,
+          49.8469444444444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Brandon",
+          "fr": "Brandon"
+        },
+        "cgndb": "GADMZ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_GADMZ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_GADMZ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.5243083,
+          55.8769833
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Buffalo Narrows",
+          "fr": "Buffalo Narrows"
+        },
+        "cgndb": "HASIZ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_HASIZ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_HASIZ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0575,
+          51.0458333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Calgary",
+          "fr": "Calgary"
+        },
+        "cgndb": "IAKID",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAKID_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAKID_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90222",
+            "name": {
+              "en": "Calgary Northwest",
+              "fr": "Calgary - nord-ouest"
+            }
+          },
+          {
+            "napsid": "90228",
+            "name": {
+              "en": "Calgary Central",
+              "fr": "Calgary - centre"
+            }
+          },
+          {
+            "napsid": "90229",
+            "name": {
+              "en": "Calgary Southeast",
+              "fr": "Calgary - sud-est"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.166667,
+          54.45
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Cold Lake",
+          "fr": "Cold Lake"
+        },
+        "cgndb": "IAEFD",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAEFD_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAEFD_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.9808333,
+          53.2241666
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Drayton Valley",
+          "fr": "Drayton Valley"
+        },
+        "cgndb": "IABOA",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IABOA_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IABOA_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "92801",
+            "name": {
+              "en": "Drayton Valley",
+              "fr": "Drayton Valley"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.490277777778,
+          53.5344444444444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Edmonton",
+          "fr": "Edmonton"
+        },
+        "cgndb": "IACMP",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IACMP_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IACMP_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90120",
+            "name": {
+              "en": "Edmonton South",
+              "fr": "Edmonton - sud"
+            }
+          },
+          {
+            "napsid": "90121",
+            "name": {
+              "en": "Edmonton East",
+              "fr": "Edmonton - est"
+            }
+          },
+          {
+            "napsid": "90133",
+            "name": {
+              "en": "Woodcroft",
+              "fr": "Woodcroft"
+            }
+          },
+          {
+            "napsid": "90140",
+            "name": {
+              "en": "Edmonton McCauley",
+              "fr": "Edmonton McCauley"
+            }
+          },
+          {
+            "napsid": "90141",
+            "name": {
+              "en": "Edmonton Lendrum",
+              "fr": "Edmonton Lendrum"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.4327778,
+          53.5836111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Edson",
+          "fr": "Edson"
+        },
+        "cgndb": "IACMW",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IACMW_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IACMW_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "92901",
+            "name": {
+              "en": "Edson",
+              "fr": "Edson"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.9859847,
+          49.1392833
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Estevan",
+          "fr": "Estevan"
+        },
+        "cgndb": "HAUQM",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_HAUQM_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_HAUQM_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.8641699,
+          54.768056
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Flin Flon",
+          "fr": "Flin Flon"
+        },
+        "cgndb": "GAILW",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_GAILW_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_GAILW_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.158333333333,
+          58.7144444444444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Fort Chipewyan",
+          "fr": "Fort Chipewyan"
+        },
+        "cgndb": "IAFEW",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAFEW_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAFEW_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.599722222222,
+          57.1811111111111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Fort McKay",
+          "fr": "Fort McKay"
+        },
+        "cgndb": "IAFFF",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAFFF_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAFFF_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.380277777778,
+          56.7263888888889
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Fort McMurray",
+          "fr": "Fort McMurray"
+        },
+        "cgndb": "IAFFI",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAFFI_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAFFI_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90701",
+            "name": {
+              "en": "Athabasca Valley",
+              "fr": "Vall\u00e9e de l'Athabasca"
+            }
+          },
+          {
+            "napsid": "90702",
+            "name": {
+              "en": "Patricia McInnes",
+              "fr": "Patricia McInnes"
+            }
+          },
+          {
+            "napsid": "94601",
+            "name": {
+              "en": "Anzac",
+              "fr": "Anzac"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.217777777778,
+          53.7111111111111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Fort Saskatchewan",
+          "fr": "Fort Saskatchewan"
+        },
+        "cgndb": "IAFFM",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAFFM_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAFFM_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90601",
+            "name": {
+              "en": "Fort Saskatchewan",
+              "fr": "Fort Saskatchewan"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.3527,
+          61.8609
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Fort Simpson",
+          "fr": "Fort Simpson"
+        },
+        "cgndb": "LAILM",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_LAILM_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_LAILM_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.8829,
+          60.0053
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Fort Smith",
+          "fr": "Fort Smith"
+        },
+        "cgndb": "LAILN",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_LAILN_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_LAILN_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.37,
+          53.3458334
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Genesee",
+          "fr": "Genesee"
+        },
+        "cgndb": "IAFYX",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAFYX_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAFYX_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "93101",
+            "name": {
+              "en": "Genesee",
+              "fr": "Genesee"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.796111111111,
+          55.1708333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Grande Prairie",
+          "fr": "Grande Prairie"
+        },
+        "cgndb": "IAHMM",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAHMM_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAHMM_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "92001",
+            "name": {
+              "en": "Grande Prairie - Henry Pirker Station",
+              "fr": "Grande Prairie - Henry Pirker Station"
+            }
+          },
+          {
+            "napsid": "91501",
+            "name": {
+              "en": "Beaverlodge",
+              "fr": "Beaverlodge"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.5627778,
+          53.4111111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Hinton",
+          "fr": "Hinton"
+        },
+        "cgndb": "IAJWU",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAJWU_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAJWU_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "93202",
+            "name": {
+              "en": "Hinton - Drinnan",
+              "fr": "Hinton - Drinnan"
+            }
+          },
+          {
+            "napsid": "93205",
+            "name": {
+              "en": "Hinton - Hillcrest",
+              "fr": "Hinton - Hillcrest"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -133.7297,
+          68.3609
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Inuvik",
+          "fr": "Inuvik"
+        },
+        "cgndb": "LALNA",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_LALNA_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_LALNA_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.5166666,
+          63.75
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Iqaluit",
+          "fr": "Iqaluit"
+        },
+        "cgndb": "OATRP",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_OATRP_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_OATRP_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.09333,
+          67.826667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Kugluktuk",
+          "fr": "Kugluktuk"
+        },
+        "cgndb": "OAUDO",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_OAUDO_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_OAUDO_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.7844444,
+          53.7591666
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Lamont County",
+          "fr": "comt\u00e9 de Lamont"
+        },
+        "cgndb": "IACGW",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IACGW_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IACGW_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90606",
+            "name": {
+              "en": "Bruderheim",
+              "fr": "Bruderheim"
+            }
+          },
+          {
+            "napsid": "91101",
+            "name": {
+              "en": "Elk Island National Park",
+              "fr": "Parc national Elk Island"
+            }
+          },
+          {
+            "napsid": "92201",
+            "name": {
+              "en": "Lamont County",
+              "fr": "Comt\u00e9 de Lamont"
+            }
+          },
+          {
+            "napsid": "92202",
+            "name": {
+              "en": "Lamont",
+              "fr": "Lamont"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.841944444444,
+          49.6936111111111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Lethbridge",
+          "fr": "Lethbridge"
+        },
+        "cgndb": "IADGP",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IADGP_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IADGP_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.676666666667,
+          50.0408333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Medicine Hat",
+          "fr": "Medicine Hat"
+        },
+        "cgndb": "IAIUC",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAIUC_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAIUC_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -126.8316,
+          65.2811
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Norman Wells",
+          "fr": "Norman Wells"
+        },
+        "cgndb": "LARCU",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_LARCU_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_LARCU_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.9022222,
+          53.5538888
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Parkland County",
+          "fr": "comt\u00e9 de Parkland"
+        },
+        "cgndb": "IAKRM",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAKRM_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAKRM_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "91301",
+            "name": {
+              "en": "Tomahawk",
+              "fr": "Tomahawk"
+            }
+          },
+          {
+            "napsid": "93101",
+            "name": {
+              "en": "Genesee",
+              "fr": "Genesee"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.714722,
+          53.216111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Prince Albert",
+          "fr": "Prince Albert"
+        },
+        "cgndb": "HAPNV",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_HAPNV_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_HAPNV_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.810277777778,
+          52.2686111111111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Red Deer",
+          "fr": "Red Deer"
+        },
+        "cgndb": "IAEJS",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAEJS_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAEJS_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90302",
+            "name": {
+              "en": "Red Deer - Riverside Drive",
+              "fr": "Red Deer - Riverside Drive"
+            }
+          },
+          {
+            "napsid": "90304",
+            "name": {
+              "en": "Red Deer - Lancaster",
+              "fr": "Red Deer - Lancaster"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.606666666667,
+          50.4547222222222
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Regina",
+          "fr": "Regina"
+        },
+        "cgndb": "HAIMP",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_HAIMP_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_HAIMP_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.686111111111,
+          52.1397222222222
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Saskatoon",
+          "fr": "Saskatoon"
+        },
+        "cgndb": "HAHJJ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_HAHJJ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_HAHJJ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.6202778,
+          53.6369444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "St. Albert",
+          "fr": "St. Albert"
+        },
+        "cgndb": "IAGHN",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAGHN_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAGHN_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90136",
+            "name": {
+              "en": "St. Albert",
+              "fr": "St. Albert"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.1438889,
+          53.5522222
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Strathcona County",
+          "fr": "comt\u00e9 de Stratchona"
+        },
+        "cgndb": "IACIQ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IACIQ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IACIQ_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90134",
+            "name": {
+              "en": "Sherwood Park",
+              "fr": "Sherwood Park"
+            }
+          },
+          {
+            "napsid": "90135",
+            "name": {
+              "en": "Ardrossan",
+              "fr": "Ardrossan"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.3283333,
+          53.8297222
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Sturgeon County",
+          "fr": "comt\u00e9 de Sturgeon"
+        },
+        "cgndb": "IAASX",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IAASX_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IAASX_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "90607",
+            "name": {
+              "en": "Gibbons",
+              "fr": "Gibbons"
+            }
+          },
+          {
+            "napsid": "90608",
+            "name": {
+              "en": "Redwater",
+              "fr": "Redwater"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.81689,
+          50.285833
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Swift Current",
+          "fr": "Swift Current"
+        },
+        "cgndb": "HAPKT",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_HAPKT_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_HAPKT_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.1463888888889,
+          49.8844444444444
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Winnipeg",
+          "fr": "Winnipeg"
+        },
+        "cgndb": "GBEIN",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_GBEIN_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_GBEIN_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.0788889,
+          55.6311111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Wood Buffalo - south",
+          "fr": "Wood Buffalo - sud"
+        },
+        "cgndb": "IANHQ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_IANHQ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_IANHQ_CURRENT.xml",
+        "associated_stations": [
+          {
+            "napsid": "94701",
+            "name": {
+              "en": "Janvier",
+              "fr": "Janvier"
+            }
+          },
+          {
+            "napsid": "90808",
+            "name": {
+              "en": "Stony Mountain",
+              "fr": "Stony Mountain"
+            }
+          },
+          {
+            "napsid": "90809",
+            "name": {
+              "en": "Conklin",
+              "fr": "Conklin"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.37,
+          62.4536
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Yellowknife",
+          "fr": "Yellowknife"
+        },
+        "cgndb": "LBAMG",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/observation/realtime/xml/AQ_OBS_LBAMG_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pnr/forecast/realtime/xml/AQ_FCST_LBAMG_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.666667,
+          49.324722
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Castlegar",
+          "fr": "Castlegar"
+        },
+        "cgndb": "JCAAC",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JCAAC_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JCAAC_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.25,
+          49.0583333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Central Fraser Valley",
+          "fr": "Bas-Fraser - centre"
+        },
+        "cgndb": "JABNO",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JABNO_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JABNO_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.483333333333,
+          49.8833333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Central Okanagan",
+          "fr": "Okanagan - centre"
+        },
+        "cgndb": "JAFUV",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JAFUV_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JAFUV_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.9347222,
+          49.6830556
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Comox",
+          "fr": "Comox"
+        },
+        "cgndb": "JCUYZ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JCUYZ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JCUYZ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.9833,
+          49.6833
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Comox Valley",
+          "fr": "Comox Valley"
+        },
+        "cgndb": "JAHJY",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JAHJY_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JAHJY_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.7667,
+          49.5
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Cranbrook",
+          "fr": "Cranbrook"
+        },
+        "cgndb": "JAIQY",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JAIQY_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JAIQY_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.7,
+          48.783333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Duncan",
+          "fr": "Duncan"
+        },
+        "cgndb": "JBBWA",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBBWA_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBBWA_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.941666666667,
+          49.175
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Eastern Fraser Valley",
+          "fr": "Bas-Fraser - est"
+        },
+        "cgndb": "JCVCC",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JCVCC_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JCVCC_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.846667,
+          56.2525
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Fort St. John",
+          "fr": "Fort St. John"
+        },
+        "cgndb": "JAGPB",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JAGPB_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JAGPB_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.327222222222,
+          50.6733333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Kamloops",
+          "fr": "Kamloops"
+        },
+        "cgndb": "JAFNW",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JAFNW_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JAFNW_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -128.652222,
+          54.053333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Kitimat",
+          "fr": "Kitimat"
+        },
+        "cgndb": "JCMDB",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JCMDB_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JCMDB_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.683333333333,
+          49.2333333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Metro Vancouver - NE",
+          "fr": "Metro Vancouver - nord-est"
+        },
+        "cgndb": "JBXHZ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBXHZ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBXHZ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.113889,
+          49.261111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Metro Vancouver - NW",
+          "fr": "Metro Vancouver - nord-ouest"
+        },
+        "cgndb": "JBRIK",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBRIK_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBRIK_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.75,
+          49.1166666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Metro Vancouver - SE",
+          "fr": "Metro Vancouver - sud-est"
+        },
+        "cgndb": "JAZBU",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JAZBU_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JAZBU_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.163333,
+          49.163333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Metro Vancouver - SW",
+          "fr": "Metro Vancouver - sud-ouest"
+        },
+        "cgndb": "JBJFI",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBJFI_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBJFI_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.933333333333,
+          49.1666666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Nanaimo / Parksville",
+          "fr": "Nanaimo / Parksville"
+        },
+        "cgndb": "JAQAL",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JAQAL_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JAQAL_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.266666666667,
+          50.2583333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "North Okanagan",
+          "fr": "Okanagan - nord"
+        },
+        "cgndb": "JBOAP",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBOAP_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBOAP_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.75,
+          53.9166666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Prince George",
+          "fr": "Prince George"
+        },
+        "cgndb": "JBLVS",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBLVS_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBLVS_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5,
+          53.0
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Quesnel",
+          "fr": "Quesnel"
+        },
+        "cgndb": "JBNTS",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBNTS_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBNTS_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -127.176111,
+          54.779167
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Smithers",
+          "fr": "Smithers"
+        },
+        "cgndb": "JBMQO",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBMQO_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBMQO_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.885833,
+          49.733333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Sparwood",
+          "fr": "Sparwood"
+        },
+        "cgndb": "JBMPJ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBMPJ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBMPJ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.133333,
+          49.75
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Squamish",
+          "fr": "Squamish"
+        },
+        "cgndb": "JCVCJ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JCVCJ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JCVCJ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -128.599722,
+          54.516389
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Terrace",
+          "fr": "Terrace"
+        },
+        "cgndb": "JBXCK",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBXCK_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBXCK_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.366666666667,
+          48.4333333333333
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Victoria / Saanich",
+          "fr": "Victoria / Saanich"
+        },
+        "cgndb": "JBOBQ",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBOBQ_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBOBQ_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.493333,
+          48.423611
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "WestShore",
+          "fr": "WestShore"
+        },
+        "cgndb": "JCLMX",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JCLMX_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JCLMX_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.966666666667,
+          50.1166666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Whistler",
+          "fr": "Whistler"
+        },
+        "cgndb": "JCJHI",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JCJHI_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JCJHI_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -135.0808333,
+          60.6961111
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Whitehorse",
+          "fr": "Whitehorse"
+        },
+        "cgndb": "KAHFT",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_KAHFT_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_KAHFT_CURRENT.xml"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.141666666667,
+          52.1416666666667
+        ]
+      },
+      "properties": {
+        "name": {
+          "en": "Williams Lake",
+          "fr": "Williams Lake"
+        },
+        "cgndb": "JBTMB",
+        "path_to_current_observation": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/observation/realtime/xml/AQ_OBS_JBTMB_CURRENT.xml",
+        "path_to_current_forecast": "http://dd.weather.gc.ca/air_quality/aqhi/pyr/forecast/realtime/xml/AQ_FCST_JBTMB_CURRENT.xml"
+      }
+    }
+  ]
+}

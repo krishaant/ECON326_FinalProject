@@ -47,8 +47,3 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
-
-# Ignore unzipped large files
-Data/
-LargeData/
-*.shp

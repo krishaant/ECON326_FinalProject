@@ -1,0 +1,23 @@
+---
+title: "CensusData"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse) #importing libraries, not all used yet
+library(gtools)
+library(modelsummary)
+library(ggeffects)
+library(data.table)
+library(sf)
+library(jsonlite)
+library(data.table)
+```
+
+Setup of location names & looking at data
+
+```{r}
+main_dir <- "C:/Users/zaneb/Documents/Vault/UBC/24W/Term 2/ECON 326/FinalProject"
+
+```
