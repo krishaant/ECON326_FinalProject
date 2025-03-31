@@ -1,0 +1,154 @@
+---
+title: "RegressionTests"
+editor: visual
+title-block-banner: "darkgreen"
+title-block-banner-color: "white"
+format:
+   html:
+    embed-resources: true
+toc: true
+fig-cap-location: top
+execute: 
+  echo: true
+  warning: false
+smooth-scroll: true
+---
+
+## Regression Tests
+
+This is a document for us to experiment with different regressions.
+
+```{r}
+source("DataCleaner.R")
+```
+
+Let's start with some descriptive statistics to get a feel for our data.
+
+```{r}
+ggplot(d, aes(x = percent_high_AQHI, y = Gini)) + #call ggplot, attach data
+  geom_point() + #scatterplot
+  labs(
+    title = "Scatterplot of Gini Coefficient vs. Percent High AQHI",
+    x = "Percent of Days with High AQHI",
+    y = "Gini Coefficient" #axis titles
+  ) + theme_minimal() + geom_smooth(method = "lm", se = TRUE, color = "blue") #simple regression
+```
+
+It looks like we have a couple of outliers in our Gini coefficient. This is likely caused by a high median income close to 300k, which means that we cannot approximate the complete Lorenz curve. Let's exclude these data points and try again. Let's identify which data points are problematic:
+
+```{r}
+d |> select(CMAUID, CMANAME, Gini, I0) |> arrange(Gini) |> head(5) |> print()
+```
+
+It looks like our Gini approximation doesn't work for Wood Buffalo or Yellowknife because of a high median income, which makes sense. Let's exclude those data points.
+
+```{r}
+d <- d |> filter(Gini > 0.02)
+```
+
+Let's rerun our scatterplot:
+
+```{r}
+ggplot(d, aes(x = percent_high_AQHI, y = Gini)) + #call ggplot, attach data
+  geom_point() + #scatterplot
+  labs(
+    title = "Scatterplot of Gini Coefficient vs. Percent High AQHI",
+    x = "Percent of Days with High AQHI",
+    y = "Gini Coefficient" #axis titles
+  ) + theme_minimal() + geom_smooth(method = "lm", se = TRUE, color = "blue") #simple regression
+```
+
+Let's try other metrics of AQHI. This could work, but the high number of truncated values seem like a waste of data availability.
+
+```{r}
+ggplot(d, aes(x = average_AQHI, y = Gini)) + #call ggplot, attach data
+  geom_point() + #scatterplot
+  labs(
+    title = "Scatterplot of Gini Coefficient vs. Average AQHI",
+    x = "Average AQHI",
+    y = "Gini Coefficient" #axis titles
+  ) + theme_minimal() + geom_smooth(method = "lm", se = TRUE, color = "blue") #simple regression
+```
+
+Whoa, that data point seems wrong. Let's check out what is causing that:
+
+```{r}
+d |> select(CMAUID, CMANAME, average_AQHI) |> arrange(average_AQHI) |> head(5) |> print()
+```
+
+Yeah, Brandon seems to have an unrealistic average_AQHI data value. Let's correct this.
+
+```{r}
+d <- d |> filter(average_AQHI > 1)
+```
+
+Trying our scatterplot again:
+
+```{r}
+ggplot(d, aes(x = average_AQHI, y = Gini)) + #call ggplot, attach data
+  geom_point() + #scatterplot
+  labs(
+    title = "Scatterplot of Gini Coefficient vs. Average AQHI",
+    x = "Average AQHI",
+    y = "Gini Coefficient" #axis titles
+  ) + theme_minimal() + geom_smooth(method = "lm", se = TRUE, color = "blue") #simple regression
+```
+
+I think this is a good choice for our variable. Let's try a few regressions.
+
+```{r}
+library(car)
+library(tidyverse)
+library(haven)
+library(stargazer)
+library(lmtest)
+library(sandwich)
+```
+
+```{r}
+binreg <- lm(Gini ~ average_AQHI, data = d) #simple regression
+
+summary(binreg) #call
+
+coeftest(binreg, vcov = vcovHC(binreg, type = "HC1")) #test for heteroskedasticity 
+```
+
+This is a really good start! We don't seem to have problems with heteroskedasticity, and our coefficients are significant with a $p<0.05$.
+
+Let's add in our control variables. We want to have an interaction variable between average_AQHI and aggregate income: we can expect air quality to effect income inequality differently in places with higher or lower incomes. We will use average (mean) income as a proxy for aggregate income; adding in this interaction will not introduce endogeneity, as mean income was not used in our calculation of the Gini coefficient.
+
+```{r}
+fullreg <- lm(Gini ~ average_AQHI + male + vismin + immigrant + married + not_eng_fr + employed + university + average_AQHI:avg_income, data = d)
+
+summary(fullreg)
+```
+
+This looks a lot better, but we should center and categorize our `avg_income` to make the model more clear to interpret and avoid problems of non-linearity in their interaction.
+
+```{r}
+mean_income <- mean(d$avg_income)
+d <- d |> mutate(centered_avg_income = avg_income - mean_income)
+```
+
+We need to fix a grouping in our data.
+
+```{r}
+d <- d |> ungroup()
+```
+
+```{r}
+d <- d |>
+  mutate(income_cat = factor(ntile(avg_income, 3), labels = c("Low", "Mid", "High")))
+```
+
+Now let's try the new regression.
+
+```{r}
+regression7 <- lm(Gini ~ average_AQHI + male + vismin + immigrant + married + not_eng_fr + employed + university + average_AQHI:income_cat, data = d)
+
+summary(regression7)
+```
+
+Great! This interaction variable was definitely relevant. Thank you Prerna for the recommendation!
+
+I am updating DataCleaner.R with our relevant code.

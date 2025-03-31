@@ -12,6 +12,12 @@ library(terra)
 library(dplyr)
 library(tidyr)
 library(splines2)
+library(car)
+library(tidyverse)
+library(haven)
+library(stargazer)
+library(lmtest)
+library(sandwich)
 
 main_dir <- "C:/Users/zaneb/Documents/Vault/UBC/24W/Term 2/ECON 326/FinalProject" #equivalent to getwd(), saved for ease
 
@@ -106,6 +112,17 @@ colnames(d)[8] <- "I0" #naming by I matrix as described in our math analysis
 colnames(d)[9] <- "I1"
 colnames(d)[10] <- "I2"
 colnames(d)[11] <- "I3"
+d <- d |> rename( #mass renaming
+  male = `% Male Population by Age | Males, 2024`,
+  vismin = `% Household Population by Visible Minority Status | Household Population For Visible Minority | Visible Minority Total, 2024`,
+  married = `% Household Population 15 Years or Over by Marital Status | Household Population 15 Years Or Over | Married Or Living With A Common-Law Partner, 2024`,
+  not_eng_fr = `% Household Population by Knowledge of Official Language | Household Population For Knowledge Of Official Language | Neither English Nor French, 2024`,
+  immigrant = `% Household Population by Total Immigrants and Place of Birth | Total Household Population | Total Immigrant, 2024`,
+  employed = `% Household Population 15 Years or Over by Labour Force Activity | Employment Rate, 2024`,
+  college = `% Household Population 15 Years or Over by Educational Attainment | Household Population 15 Years Or Over | College, CEGEP Or Other Non-University Certificate Or Diploma, 2024`,
+  university = `% Household Population 15 Years or Over by Educational Attainment | Household Population 15 Years Or Over | University Degree, 2024`,
+  avg_income = `Household Population by Income (Current Year) | Average Income ($), 2024`
+)
 
 placeholder_matrix <- matrix(NA, nrow = 2, ncol = 5, dimnames = list(c("x", "y"), paste0(1:5))) #placeholder matrix to be added to each CMA
 d$IP <- replicate(nrow(d),placeholder_matrix,simplify = FALSE) #add the matrix to all rows of d
@@ -164,3 +181,14 @@ Lorenz <- function(i){ #function to plot Lorenz curves: some Gini coefficients w
   lines(x, y, col = "blue", lwd = 2)
   lines(x, Ey, col = "green", lwd = 2) #plotting
 }
+
+d <- d |> filter(Gini > 0.02) #filtering out CMAs that cannot be accurately modeled due to high median income, n = 2
+
+d <- d |> filter(average_AQHI > 1) #filtering out average AQHI values that don't make sense, n = 1
+
+mean_income <- mean(d$avg_income) #generate mean income
+d <- d |> mutate(centered_avg_income = avg_income - mean_income) #center average income for interaction
+
+d <- d |> ungroup() #ungroup data now that everything is joined
+
+d <- d |> mutate(income_cat = factor(ntile(avg_income, 3), labels = c("Low", "Mid", "High"))) #group average income by category to account for nonlinear interaction with Gini

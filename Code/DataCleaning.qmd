@@ -4,13 +4,8 @@ editor: visual
 title-block-banner: "darkgreen"
 title-block-banner-color: "white"
 format:
-  pdf:
-    toc: true
-    colorlinks: true
-    tbl:
-      caption-location: top
-      alignment: center
-      header-background: gray!20
+  html:
+    embed-resources: true
 toc: true
 fig-cap-location: top
 execute: 
