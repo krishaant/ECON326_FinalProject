@@ -11,6 +11,7 @@ library(ggplot2)
 library(terra)
 library(dplyr)
 library(tidyr)
+library(splines2)
 
 main_dir <- "C:/Users/zaneb/Documents/Vault/UBC/24W/Term 2/ECON 326/FinalProject" #equivalent to getwd(), saved for ease
 
@@ -51,7 +52,7 @@ placenames <- unlist(lapply(regions, function(region){
   setdiff(names(d_AQHI[[region]]), c("Date", "Hour (UTC)")) #making a list of cgndb now in d_AQHI
 }))
 
-d_Census <- fread(file.path(main_dir, "Data/Census/CMA_Data.csv")) #import census data
+d_Census <- fread(file.path(main_dir, "Data/Census/CMA_data_updated.csv")) #import census data
 
 CMA_naps <- CMA |> filter(lengths(st_intersects(CMA, naps)) > 0) #create a CMA dataframe that includes only sites with a naps
 
@@ -100,3 +101,66 @@ d <- d |>
   rename(CMANAME = CMANAME.x) #removing doubled CMANAME column
 
 d <- st_as_sf(d) #make d recognized as spatial again
+
+colnames(d)[8] <- "I0" #naming by I matrix as described in our math analysis
+colnames(d)[9] <- "I1"
+colnames(d)[10] <- "I2"
+colnames(d)[11] <- "I3"
+
+placeholder_matrix <- matrix(NA, nrow = 2, ncol = 5, dimnames = list(c("x", "y"), paste0(1:5))) #placeholder matrix to be added to each CMA
+d$IP <- replicate(nrow(d),placeholder_matrix,simplify = FALSE) #add the matrix to all rows of d
+
+fIP <- function(i){ #iterable
+  mat <- d$IP[[i]] #grab empty IP matrix
+  I0 <- d$I0[i]
+  I1 <- d$I1[i]
+  I2 <- d$I2[i]
+  I3 <- d$I3[i] #grab I vector values
+  xvals <- sort(c(0,0.5,1-(I1/100),1-(I1*I2/10000),1-(I1*I2*I3/1000000))) #calculate IP matrix x values
+  yvals <- sort(c(0,I0/300000,100000/300000,200000/300000,1)) #calculate IP matrix y values
+  mat <- matrix(c(xvals, yvals), nrow = 2, byrow = TRUE) #assign values to matrix
+  return(mat) #assign matrix to d$IP
+}
+
+d$IP <- lapply(seq_len(nrow(d)), fIP) #apply the function above to all rows in d
+
+fix_IP <- function(mat){
+  mat[2, ] <- pmin(mat[2, ],mat[1, ])  # force IPy to be less than or equal to IPx for income cases with erratic behavior
+  return(mat)
+}
+d$IP <- lapply(d$IP, fix_IP)
+
+d$P <- lapply(d$IP, function(mat){ #list apply to create P function for all rows in d
+  splinefun(mat[1,],mat[2,],method = "hyman") #cubic spline function, using "hyman" method for monotonically increasing natural cubic spline
+})
+
+d$E <- lapply(d$IP, function(mat){ #list apply to create E function for all rows in d
+  slope <- mat[2,5]/mat[1,5]  # IPy[5]/IPx[5]
+  return(function(x) slope*x) #return function
+})
+
+d$EP <- lapply(seq_len(nrow(d)), function(i){ #list apply to create EP function for all rows in d
+  E <- d$E[[i]]
+  P <- d$P[[i]]
+  return(function(x) E(x) - P(x)) #return function
+})
+
+d$Gini <- sapply(seq_len(nrow(d)), function(i){ #numerical values
+  areaA <- integrate(d$EP[[i]],d$IP[[i]][1,1],d$IP[[i]][1,5])
+  areaB <- integrate(d$E[[i]],d$IP[[i]][1,1],d$IP[[i]][1,5])
+  return(areaA$value/areaB$value) #will assign this value to all rows of d$Gini
+})
+
+Lorenz <- function(i){ #function to plot Lorenz curves: some Gini coefficients were returning negative, need to check plots
+  IPx <- d$IP[[i]][1,]
+  IPy <- d$IP[[i]][2,]
+  P <- d$P[[i]]
+  E <- function(x) (IPy[5] / IPx[5]) * x
+  x <- seq(IPx[1], IPx[5], length.out = 1000) #linspace of x
+  y  <- P(x) #approximation spline
+  Ey <- E(x) #equality line
+  plot(IPx, IPy, pch = 19, main = paste("Lorenz Curve of", d$CMANAME[i]),
+       xlab = "Population Share", ylab = "Income Share", ylim = c(0, 1))
+  lines(x, y, col = "blue", lwd = 2)
+  lines(x, Ey, col = "green", lwd = 2) #plotting
+}

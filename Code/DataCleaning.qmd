@@ -3,9 +3,14 @@ title: "Data Cleaning"
 editor: visual
 title-block-banner: "darkgreen"
 title-block-banner-color: "white"
-format: 
- html: 
-  embed-resources: true
+format:
+  pdf:
+    toc: true
+    colorlinks: true
+    tbl:
+      caption-location: top
+      alignment: center
+      header-background: gray!20
 toc: true
 fig-cap-location: top
 execute: 
@@ -16,14 +21,14 @@ smooth-scroll: true
 
 ## Data Cleaning
 
-Our research question is "Is there a correlation between Air Quality Health Index and income inequality in Canadian metropolitan areas?"
+Our research question is "Does air quality have a statistically significant effect on income inequality within Canadian Metropolitan Areas?"
 
 We've collected our Air Quality Health Index (AQHI) data. We now need to identify the Census Metro Areas (CMAs) associated with each Station ID.
 
 First, let's change our AQHI data to refer to a city rather than a station code!
 
 ```{r}
-library(tidyverse) #importing libraries, not all used yet
+library(tidyverse) #importing libraries, not all are used currently
 library(gtools)
 library(modelsummary)
 library(ggeffects)
@@ -36,6 +41,7 @@ library(ggplot2)
 library(terra)
 library(dplyr)
 library(tidyr)
+library(splines2)
 ```
 
 ```{r}
@@ -43,7 +49,7 @@ main_dir <- "C:/Users/zaneb/Documents/Vault/UBC/24W/Term 2/ECON 326/FinalProject
 
 regions <- c("atl", "ont", "pnr", "pyr") #the four areas of data collection in AQHI files
 
-d_AQHI <- lapply(setNames(regions, regions), function(region) { #lapply applies a function to a list
+d_AQHI <- lapply(setNames(regions, regions), function(region) { #organize by region
   dir_path <- file.path(main_dir, "Data/AQHI", region) #folder of data
   files <- list.files(path = dir_path, pattern = "\\.csv$", full.names = TRUE) #list of files in the folder
   rbindlist(lapply(files, fread), use.names = TRUE, fill = TRUE) #reading all of the folders, then binding them together under separate lists in d_AQHI
@@ -63,10 +69,9 @@ We need to adjust that data to correspond with different CMAs.
 ```{r}
 CMA <- st_read(file.path(main_dir, "Data/Spatial/CMA_shape.shp")) #import CMA
 
-PR <- st_read(file.path(main_dir, "Data/Spatial/PR_shape.shp")) #import PR
-PR <- st_simplify(PR, dTolerance = 10000) #simplify PR
+PR <- st_read(file.path(main_dir, "Data/Spatial/PR_shape_simplified.shp")) #import PR
 
-CMA <- CMA |> filter(PRUID != "24") #filter out QC
+CMA <- CMA |> filter(PRUID != "24") #filter out QC: no data available
 
 naps <- st_transform(naps, 3347) #CRS correction
 ```
@@ -82,14 +87,6 @@ naps_df <- naps_df[naps_df$cgndb %in% valid_cgndb] #remove irrelevant stations
 naps_df[, name := lapply(name, function(x) fromJSON(x)$en)] #adjust names to english
 
 cgndb_key <- setNames(naps_df$name, naps_df$cgndb) #create a key of place names and cgndb values
-```
-
-```{r}
-#for(region in regions){
- # loc_names <- valid_cgndb[valid_cgndb %in% names(d_AQHI[[region]])] #create a list of names from the region
-  #loc_key <- as.character(cgndb_key[loc_names]) #add the key to the list, make it chr (avoiding bug)
-  #setnames(d_AQHI[[region]], loc_names, loc_key) #set new names for d_AQHI!
-#}
 ```
 
 ```{r}
@@ -119,7 +116,7 @@ ggplot() +
 Now let's import our census data.
 
 ```{r}
-d_Census <- fread(file.path(main_dir, "Data/Census/CMA_Data.csv")) #import census data
+d_Census <- fread(file.path(main_dir, "Data/Census/CMA_data_updated.csv")) #import census data
 ```
 
 We now need to merge all of our data together into one clear dataframe.
@@ -221,32 +218,98 @@ ggplot() +
   coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
 ```
 
-Now we can work with the data! Estimating the Gini Coefficient through the method set out in our proposal:
+Now we can work with the data! Let's begin by renaming variables.
 
-```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%"}
-ggplot() +
-  geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
-  geom_sf(data = d, aes(fill = average_AQHI), color = "black", size = 0.2) +  #color by AQHI percentage
-  scale_fill_viridis_c(name = "Average AQHI", option = "plasma") + #color scale
-  theme_minimal(base_family = "serif") + 
-  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
-  labs(title = "Average AQHI by Census Metropolitan Area", 
-      , caption = "Data source: StatCan") +
-  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
+```{r}
+colnames(d)[8] <- "I0" #naming by I matrix as described in our math analysis
+colnames(d)[9] <- "I1"
+colnames(d)[10] <- "I2"
+colnames(d)[11] <- "I3"
+print(colnames(d)) #check the change
 ```
 
-```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%"}
-ggplot() +
-  geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
-  geom_sf(data = d, aes(fill = `Households by Income (Current Year) | Median Household Income (Current Year $), 2024`), color = "black", size = 0.2) +  #color by median income
-  scale_fill_viridis_c(name = "Median Household Income", option = "viridis") + #color scale
-  theme_minimal(base_family = "serif") + 
-  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
-  labs(title = "Median Household Income by Census Metropolitan Area", 
-       caption = "Data source: StatCan") +
-  coord_sf(xlim = c(3690800, 9012300), ylim = c(687400, 5242000))
+We now need to generate our Gini Coefficient calculations. Let's start by generating the IP matrix.
+
+```{r}
+placeholder_matrix <- matrix(NA, nrow = 2, ncol = 5, dimnames = list(c("x", "y"), paste0(1:5))) #placeholder matrix to be added to each CMA
+d$IP <- replicate(nrow(d),placeholder_matrix,simplify = FALSE) #add the matrix to all rows of d
 ```
 
 ```{r}
-print(colnames(d))
+fIP <- function(i){ #iterable
+  mat <- d$IP[[i]] #grab empty IP matrix
+  I0 <- d$I0[i]
+  I1 <- d$I1[i]
+  I2 <- d$I2[i]
+  I3 <- d$I3[i] #grab I vector values
+  xvals <- sort(c(0,0.5,1-(I1/100),1-(I1*I2/10000),1-(I1*I2*I3/1000000))) #calculate IP matrix x values
+  yvals <- sort(c(0,I0/300000,100000/300000,200000/300000,1)) #calculate IP matrix y values
+  mat <- matrix(c(xvals, yvals), nrow = 2, byrow = TRUE) #assign values to matrix
+  return(mat) #assign matrix to d$IP
+}
+```
+
+```{r}
+d$IP <- lapply(seq_len(nrow(d)), fIP) #apply the function above to all rows in d
+```
+
+```{r}
+fix_IP <- function(mat){
+  mat[2, ] <- pmin(mat[2, ],mat[1, ])  # force IPy to be less than or equal to IPx for income cases with erratic behavior
+  return(mat)
+}
+d$IP <- lapply(d$IP, fix_IP)
+```
+
+```{r}
+d$P <- lapply(d$IP, function(mat){ #list apply to create P function for all rows in d
+  splinefun(mat[1,],mat[2,],method = "hyman") #cubic spline function, using "hyman" method for monotonically increasing natural cubic spline
+})
+```
+
+```{r}
+d$E <- lapply(d$IP, function(mat){ #list apply to create E function for all rows in d
+  slope <- mat[2,5]/mat[1,5]  # IPy[5]/IPx[5]
+  return(function(x) slope*x) #return function
+})
+```
+
+```{r}
+d$EP <- lapply(seq_len(nrow(d)), function(i){ #list apply to create EP function for all rows in d
+  E <- d$E[[i]]
+  P <- d$P[[i]]
+  return(function(x) E(x) - P(x)) #return function
+})
+```
+
+```{r}
+d$Gini <- sapply(seq_len(nrow(d)), function(i){ #numerical values
+  areaA <- integrate(d$EP[[i]],d$IP[[i]][1,1],d$IP[[i]][1,5])
+  areaB <- integrate(d$E[[i]],d$IP[[i]][1,1],d$IP[[i]][1,5])
+  return(areaA$value/areaB$value) #will assign this value to all rows of d$Gini
+})
+```
+
+```{r}
+Lorenz <- function(i){ #function to plot Lorenz curves: some Gini coefficients were returning negative, need to check plots
+  IPx <- d$IP[[i]][1,]
+  IPy <- d$IP[[i]][2,]
+  P <- d$P[[i]]
+  E <- function(x) (IPy[5] / IPx[5]) * x
+  x <- seq(IPx[1], IPx[5], length.out = 1000) #linspace of x
+  y  <- P(x) #approximation spline
+  Ey <- E(x) #equality line
+  plot(IPx, IPy, pch = 19, main = paste("Lorenz Curve of", d$CMANAME[i]),
+       xlab = "Population Share", ylab = "Income Share", ylim = c(0, 1))
+  lines(x, y, col = "blue", lwd = 2)
+  lines(x, Ey, col = "green", lwd = 2) #plotting
+}
+```
+
+```{r}
+Lorenz(66) #example of a high-income CMA where the Gini coefficient is hard to estimate with our data values (300k is not far above the median income--this is a rare case (n=3))
+```
+
+```{r}
+Lorenz(35) #example of a high-income CMA where the Gini coefficient is easier to estimate with our data values
 ```

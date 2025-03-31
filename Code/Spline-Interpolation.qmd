@@ -1,0 +1,65 @@
+---
+title: "Spline-Interpolation"
+format: html
+editor: visual
+---
+
+## This document is for practicing spline interpolation.
+
+We need natural cubic splines that are monotonically increasing (`method = "hyman"`) and fit well with the model of the Lorenz curve.
+
+I've manually calculated the $IP_k$ matrix for Vancouver's CMA, and will be using that data to test these methods.
+
+```{r}
+library(splines2)
+```
+
+```{r}
+IPx <- sort(c(0.0,0.5,0.492629,0.902959715,0.992020086))
+IPy <- sort(c(0.0,0.338737767,0.333333333,0.666666667,1))
+```
+
+```{r}
+P <- splinefun(IPx, IPy, method = "hyman")
+```
+
+```{r}
+P
+```
+
+```{r}
+E = function(x){
+  return((IPy[5]/IPx[5])*x)
+}
+```
+
+We need to graph our interpolated function:
+
+```{r}
+x <- seq(IPx[1],IPx[5],length.out=1000)
+y <- P(x)
+Ey <- E(x)
+```
+
+```{r}
+plot(IPx, IPy, pch = 19, main = "Lorenz Curve",
+     xlab = "Population Share", ylab = "Income Share")
+lines(x, y, col = "blue", lwd = 2)
+lines(x, Ey, col = "green", lwd = 2)
+```
+
+Now we need to identify the Gini Coefficient.
+
+```{r}
+EP <- function(x){
+  E(x)-P(x)
+}
+```
+
+```{r}
+areaA <- integrate(EP, IPx[1], IPx[5])
+areaB <- integrate(E,IPx[1],IPx[5])
+Gini <- areaA$value/areaB$value
+```
+
+We have our Gini coefficient! The Vancouver CMA has a Gini coefficient of `.326`.
