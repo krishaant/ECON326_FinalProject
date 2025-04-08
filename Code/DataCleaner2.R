@@ -1,5 +1,3 @@
-
-
 library(tidyverse) #importing libraries, not all used yet
 library(gtools)
 library(modelsummary)
@@ -295,5 +293,3 @@ model_spatial_fe <- lm(Gini ~ average_AQHI + I(average_AQHI^2) + male + vismin +
                          college + labor_force +LANDAREA, 
                        data = d)
 summary(model_spatial_fe)
-
-
