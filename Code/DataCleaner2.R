@@ -1,3 +1,5 @@
+
+
 library(tidyverse) #importing libraries, not all used yet
 library(gtools)
 library(modelsummary)
@@ -12,6 +14,12 @@ library(terra)
 library(dplyr)
 library(tidyr)
 library(splines2)
+library(car)
+library(tidyverse)
+library(haven)
+library(stargazer)
+library(lmtest)
+library(sandwich)
 
 main_dir <- "D:/LeStoreDownload/ECON326_FinalProject-main/ECON326_FinalProject-main" #equivalent to getwd(), saved for ease
 
@@ -106,6 +114,21 @@ colnames(d)[8] <- "I0" #naming by I matrix as described in our math analysis
 colnames(d)[9] <- "I1"
 colnames(d)[10] <- "I2"
 colnames(d)[11] <- "I3"
+d <- d |> rename( #mass renaming
+  male = `% Male Population by Age | Males, 2024`,
+  vismin = `% Household Population by Visible Minority Status | Household Population For Visible Minority | Visible Minority Total, 2024`,
+  married = `% Household Population 15 Years or Over by Marital Status | Household Population 15 Years Or Over | Married Or Living With A Common-Law Partner, 2024`,
+  not_eng_fr = `% Household Population by Knowledge of Official Language | Household Population For Knowledge Of Official Language | Neither English Nor French, 2024`,
+  immigrant = `% Household Population by Total Immigrants and Place of Birth | Total Household Population | Total Immigrant, 2024`,
+  employed = `% Household Population 15 Years or Over by Labour Force Activity | Employment Rate, 2024`,
+  college = `% Household Population 15 Years or Over by Educational Attainment | Household Population 15 Years Or Over | College, CEGEP Or Other Non-University Certificate Or Diploma, 2024`,
+  university = `% Household Population 15 Years or Over by Educational Attainment | Household Population 15 Years Or Over | University Degree, 2024`,
+  avg_income = `% Household Population by Income (Current Year) | Household Population 15 Years Or Over For Income | With Income, 2024`,
+  english_only = `% Household Population by Knowledge of Official Language | Household Population For Knowledge Of Official Language | English Only, 2024`,
+  french_only = `% Household Population by Knowledge of Official Language | Household Population For Knowledge Of Official Language | French Only, 2024`,
+  language_Both = `% Household Population by Mother Tongue | Household Population For Mother Tongue | Multiple Languages | English & French, 2024`,
+  labor_force = `% Basics | Total Household Population 15 Years Or Over In The Labour Force, 2024`,
+    )
 
 placeholder_matrix <- matrix(NA, nrow = 2, ncol = 5, dimnames = list(c("x", "y"), paste0(1:5))) #placeholder matrix to be added to each CMA
 d$IP <- replicate(nrow(d),placeholder_matrix,simplify = FALSE) #add the matrix to all rows of d
@@ -165,167 +188,112 @@ Lorenz <- function(i){ #function to plot Lorenz curves: some Gini coefficients w
   lines(x, Ey, col = "green", lwd = 2) #plotting
 }
 
-######################################
+d <- d |> filter(Gini > 0.02) #filtering out CMAs that cannot be accurately modeled due to high median income, n = 2
+
+d <- d |> filter(average_AQHI > 1) #filtering out average AQHI values that don't make sense, n = 1
+
 
 ######################################
-df_final <- d %>%
-  st_drop_geometry() %>%  # 对于OLS，不需要geometry
-  dplyr::select(
-    CMAUID,
-    CMANAME,
-    Gini,
-    average_AQHI,
-    percent_high_AQHI,
-    PRUID,
-    `% Male Population by Age | Males, 2024`,
-    `% Household Population by Visible Minority Status | Household Population For Visible Minority | Visible Minority Total, 2024`,
-    `% Household Population 15 Years or Over by Marital Status | Household Population 15 Years Or Over | Married Or Living With A Common-Law Partner, 2024`,
-    `% Household Population 15 Years or Over by Labour Force Activity | Employment Rate, 2024`,
-    `% Household Population by Income (Current Year) | Household Population 15 Years Or Over For Income | With Income, 2024`
-    # 
-  ) %>%
-  # 
-  rename(
-    pct_male        = `% Male Population by Age | Males, 2024`,
-    pct_vismin      = `% Household Population by Visible Minority Status | Household Population For Visible Minority | Visible Minority Total, 2024`,
-    pct_married     = `% Household Population 15 Years or Over by Marital Status | Household Population 15 Years Or Over | Married Or Living With A Common-Law Partner, 2024`,
-    employment_rate = `% Household Population 15 Years or Over by Labour Force Activity | Employment Rate, 2024`,
-    pct_with_income = `% Household Population by Income (Current Year) | Household Population 15 Years Or Over For Income | With Income, 2024`
-  ) %>%
-  # 
-  filter(
-    !is.na(Gini),
-    !is.na(average_AQHI),
-    !is.na(pct_male),
-    !is.na(pct_vismin),
-    !is.na(pct_married),
-    !is.na(employment_rate),
-    !is.na(pct_with_income)
-  )
 
+ggplot(d, aes(x = average_AQHI, y = Gini)) + #call ggplot, attach data
+  geom_point() + #scatterplot
+  labs(
+    title = "Scatterplot of Gini Coefficient vs. Average AQHI",
+    x = "Average AQHI",
+    y = "Gini Coefficient" #axis titles
+  ) + theme_minimal() + geom_smooth(method = "lm", se = TRUE, color = "blue") #simple regression
+
+library(car)
+library(tidyverse)
+library(haven)
+library(stargazer)
 library(lmtest)
 library(sandwich)
+library(splines)
 
-######################################
 
-######################################
-mod_main <- lm(
-  Gini ~ average_AQHI +
-    pct_male +
-    pct_vismin +
-    pct_married +
-    employment_rate +
-    pct_with_income,
-  data = df_final
+binreg <- lm(Gini ~ average_AQHI, data = d) #simple regression
+
+summary(binreg) #call
+
+
+coeftest(binreg, vcov = vcovHC(binreg, type = "HC1")) #test for heteroskedasticity 
+
+
+fullreg <- lm(Gini ~ average_AQHI + male + vismin + immigrant + married + not_eng_fr + employed + university + average_AQHI:avg_income, data = d)
+
+summary(fullreg)
+
+mean_income <- mean(d$avg_income) #generate mean income
+d <- d |> mutate(centered_avg_income = avg_income - mean_income) #center average income for interaction
+
+d <- d |> ungroup() #ungroup data now that everything is joined
+
+d <- d |> mutate(income_cat = factor(ntile(avg_income, 3), labels = c("Low", "Mid", "High"))) #group average income by category to account for nonlinear interaction with Gini
+
+regression7 <- lm(Gini ~ average_AQHI + male + vismin + immigrant + married + not_eng_fr + employed + university + average_AQHI:income_cat, data = d)
+
+summary(regression7)
+
+robustreg <- lm(
+  Gini ~ percent_high_AQHI + male + vismin + immigrant + 
+    married + not_eng_fr + employed + university,
+  data = d
 )
-
-# 
-summary(mod_main)  # OLS
-coeftest(mod_main, vcov=vcovHC(mod_main, type="HC1"))  # 
+summary(robustreg)
 
 
-mod_alt1 <- lm(
-  Gini ~ percent_high_AQHI +
-    pct_male +
-    pct_vismin +
-    pct_married +
-    employment_rate +
-    pct_with_income,
-  data=df_final
-)
-
-coeftest(mod_alt1, vcov=vcovHC(mod_alt1, type="HC1"))
-
-
-df_no_outliers <- df_final %>%
-  filter(!CMANAME %in% c("Toronto", "Vancouver"))
-
-mod_alt2 <- lm(
-  Gini ~ average_AQHI +
-    pct_male +
-    pct_vismin +
-    pct_married +
-    employment_rate +
-    pct_with_income,
-  data=df_no_outliers
-)
-
-coeftest(mod_alt2, vcov=vcovHC(mod_alt2, type="HC1"))
-
-
-df_final$region_factor <- as.factor(df_final$PRUID)
-
-mod_alt3 <- lm(
-  Gini ~ average_AQHI +
-    pct_male +
-    pct_vismin +
-    pct_married +
-    employment_rate +
-    pct_with_income +
-    region_factor,
-  data=df_final
-)
-
-coeftest(mod_alt3, vcov=vcovHC(mod_alt3, type="HC1"))
-
-
-library(stargazer)
-######################################
-
-######################################
-stargazer(
-  mod_main,
-  mod_alt1,
-  mod_alt2,
-  mod_alt3,
-  type = "text",   # 
-  title = "Main vs. Robustness Checks",
-  digits = 4,
-  column.labels = c("Main", "Alt1", "Alt2", "Alt3")
-)
-
-
-# 
-# install.packages("car")
+# --------------------------
+# Model Specification
+# --------------------------
+library(tidyverse)
+library(lmtest)
+library(sandwich)
 library(car)
+library(stargazer)
 
-# 
-vif_values_main <- vif(mod_main)
-vif_values_main
-
-
-
-# 
-df_final$average_AQHI_sq <- df_final$average_AQHI^2
-
-# 
-mod_poly <- lm(
-  Gini ~ average_AQHI + average_AQHI_sq +
-    pct_male +
-    pct_vismin +
-    pct_married +
-    employment_rate +
-    pct_with_income,
-  data = df_final
-)
-
-# 
-summary(mod_poly)
-library(lmtest); library(sandwich)
-coeftest(mod_poly, vcov = vcovHC(mod_poly, type="HC1"))
+model_main <- lm(Gini ~ average_AQHI + I(average_AQHI^2)+ male + vismin + immigrant + married + 
+                   not_eng_fr + employed + university + college+labor_force, data = d)
+summary(model_main)
+coeftest(model_main, vcov = vcovHC(model_main, type = "HC1"))
 
 
-df_final$log_AQHI <- log(df_final$average_AQHI)
+model_robust2 <- lm(Gini ~ average_AQHI + I(average_AQHI^2) + male + vismin + 
+                      immigrant + married + not_eng_fr + employed + university + 
+                      college + labor_force + factor(income_cat), 
+                    data = d)
 
-mod_log <- lm(
-  Gini ~ log_AQHI +
-    pct_male +
-    pct_vismin +
-    pct_married +
-    employment_rate +
-    pct_with_income,
-  data = df_final
-)
+summary(model_robust2)
+coeftest(model_robust2, vcov = vcovHC(model_robust2, type = "HC1"))
 
-coeftest(mod_log, vcov=vcovHC(mod_log, type="HC1"))
+
+
+model_robust3 <- lm(Gini ~ average_AQHI + I(average_AQHI^2) + male + vismin + 
+                      immigrant + married + not_eng_fr + employed  + labor_force + factor(income_cat), 
+                    data = d)
+
+summary(model_robust3)
+coeftest(model_robust3, vcov = vcovHC(model_robust3, type = "HC1"))
+
+library(quantreg)
+model_quantile <- rq(Gini ~ average_AQHI + I(average_AQHI^2) + male + vismin + 
+                       immigrant + married + not_eng_fr + employed + university + 
+                       college + labor_force + factor(income_cat), 
+                     data = d, tau = 0.5)
+
+summary(model_quantile)
+
+
+model_spatial_fe <- lm(Gini ~ average_AQHI + I(average_AQHI^2) + male + vismin + 
+                         immigrant + married + not_eng_fr + employed + university + 
+                         college + labor_force + factor(CMATYPE), 
+                       data = d)
+summary(model_spatial_fe)
+
+model_spatial_fe <- lm(Gini ~ average_AQHI + I(average_AQHI^2) + male + vismin + 
+                         immigrant + married + not_eng_fr + employed + university + 
+                         college + labor_force +LANDAREA, 
+                       data = d)
+summary(model_spatial_fe)
+
 

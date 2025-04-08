@@ -1,0 +1,539 @@
+% AEJ-Article.tex for AEA last revised 22 June 2011
+\documentclass[AEJ]{AEA}
+
+% The mathtime package uses a Times font instead of Computer Modern.
+% Uncomment the line below if you wish to use the mathtime package:
+%\usepackage[cmbold]{mathtime}
+% Note that miktex, by default, configures the mathtime package to use commercial fonts
+% which you may not have. If you would like to use mathtime but you are seeing error
+% messages about missing fonts (mtex.pfb, mtsy.pfb, or rmtmi.pfb) then please see
+% the technical support document at http://www.aeaweb.org/templates/technical_support.pdf
+% for instructions on fixing this problem.
+
+% Note: you may use either harvard or natbib (but not both) to provide a wider
+% variety of citation commands than latex supports natively. See below.
+
+% Uncomment the next line to use the natbib package with bibtex 
+%\usepackage{natbib}
+
+% Uncomment the next line to use the harvard package with bibtex
+%\usepackage[abbr]{harvard}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage{verbatim} 
+\usepackage{geometry}
+\usepackage{graphicx}
+\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=0pt}
+
+% This command determines the leading (vertical space between lines) in draft mode
+% with 1.5 corresponding to "double" spacing.
+\draftSpacing{1.5}
+
+\begin{document}
+
+\title{Air Quality and Income Inequality:\\Canadian Metropolitan Areas}
+\shortTitle{Air Quality and Income Inequality}
+\author{Aiden Cathcart, Jiaqi Lei,\\Krishaant Pathmanathan, and Zane Williams\thanks{%
+All authors contributed equally.
+Cathcart: Department of Economics, University of British Columbia, 6000 Iona Dr,
+Vancouver, BC V6T 1L4 (email: aidentc@student.ubc.ca);
+Lei: Department of Economics, University of British Columbia, 6000 Iona Dr,
+Vancouver, BC V6T 1L4 (email: jlei06@student.ubc.ca);
+Pathmanathan: Department of Economics, University of British Columbia, 6000 Iona Dr,
+Vancouver, BC V6T 1L4 (email: kpathman@student.ubc.ca);
+Williams: Department of Economics, University of British Columbia, 6000 Iona Dr,
+Vancouver, BC V6T 1L4 (email: zanebw@student.ubc.ca)}}
+\date{\today}
+\pubMonth{April}
+\pubYear{2025}
+\pubVolume{N/A}
+\pubIssue{N/A}
+\JEL{}
+\Keywords{}
+
+\begin{abstract}
+Your abstract here.
+\end{abstract}
+
+\maketitle
+
+As climate change reshapes environmental regimes worldwide, academic and
+political interest in the interactions between climatic and social systems has 
+grown. Environmental exposures, including air pollution, are understood to 
+impact human outcomes (Burke et al., 2022). Studies which evaluate the varied effects of
+environmental exposures across social and economic subgroups are especially
+salient (Landrigan et al., 2018). However, the impact of environmental exposures 
+on urban economic
+conditions is underexplored.
+
+Air pollution is a particularly important source of environmental exposure:
+globally, ``approximately 86\% (2.5 billion inhabitants) of urban inhabitants 
+lived in urban areas that exceeded WHO's 2005 guideline annual average 
+PM\textsubscript{2.5}" (Southerland et al., 2022). Previous research has 
+determined that stringent 
+air quality regulations, such as those instated by the Clean Air Act, can 
+exacerbate income inequality (Jha et al., 2019). This conclusion may cause regulatory 
+agencies to avoid implementing environmental policy in order to avoid negative 
+economic outcomes. Under the Clean Air Act, a county that is out of attainment 
+with the American National Ambient Air Quality Standards is subject to ``stricter
+environmental regulations than attainment counties" (Jha et al., 2019).
+
+This detail leads to a potential missattribution of causality in the
+relationship between strict air quality standards and income inequality. If 
+urban areas with poor air quality are less resilient to increases in income
+inequality, it could be poor air quality—not air quality regulation—which 
+corresponds with higher relative income inequality. In principle, this 
+destabilizing effect is possible. Poor air quality has a disproportionately
+negative impact on low-income households (Deryugina et al., 2021). Additionally, 
+poor air quality
+is associated with worsened labor productivity due to adverse health impacts
+(Office of Air and Radiation, 2011). Together, these impacts on the workforce 
+might worsen the short- and
+long-term impacts of an economic shock on income inequality.
+
+A first step to determining whether air quality has a destabilizing effect on
+income equality is to determine whether a relationship between air quality and
+income inequality exists. As such, this paper asks if air quality has a
+statistically significant effect on income inequality within Canadian
+Metropolitan Areas (CMAs). By illustrating this relationship, we hope to 
+contribute to a robust understanding of the connection between environmental
+exposures and human outcomes. Assessing the complex interactions between
+climatic and social systems allows for the implementation of more accurate,
+equitable, and effective environmental policy. !ADD OVERVIEW OF KEY FINDINGS
+
+\section{Data Description}
+
+All of the data used in this research was collected from one of three sources:
+Environment and Climate Change Canada, Statistics Canada’s 2021 Census,
+and Environics Analytics’ 2024 Demographic Estimates \& Projections. 
+
+Air Quality Health Index (AQHI) is a metric of air pollution created by
+Environment and Climate Change Canada. Using a risk-weighted scale of
+ground-level ozone (O\textsubscript{3}), particulate matter 
+(PM\textsubscript{2.5} \& PM\textsubscript{10}) and nitrogen dioxide
+(NO\textsubscript{2}), the index provides a value typically ranging between 1
+and 10 (Government of Canada, 2021). AQHI values between 1 and 3 are associated with 
+low health risk;
+values between 4 and 6 are associated with a moderate health risk; values
+between 7 and 10 are associated with a high health risk; and values above 10
+indicate a very high health risk (Government of Canada, 2015). The AQHI index is 
+typically reported to
+the public as integer values—but decimal hourly observation data is available 
+from December 2023 until April 2025. Hourly data is organized into CSV files by
+month of observation and the province of the measurement station. Due to 
+provincial policy, no AQHI data from Quebec is publicly available. We collected
+all AQHI observation from 2024. We combined each measurement station's hourly 
+averages into a daily average. We also collected a GeoJSON file which contains
+spatial data about every AQHI measurement station (Environment and Climate Change Canada, 
+2025). This GeoJSON file was
+converted to a shapefile.
+
+To associate this data with a given CMA, we collected provincial and CMA boundary
+shapefiles from Statistics Canada's 2021 Census data (Statistics Canada, 2021a; 
+Statistics Canada, 2021b). While this
+boundary data is from 2021, CMA boundaries have not changed since the 2021 census.
+In addition to providing shapefile data, these boundary sets include a census 
+population designation and land area calculation (km\textsuperscript{2}) for each CMA.
+Once we adjusted the Coordinate Reference Systems of all relevant shapefiles, we
+were able to geographically group AQHI measurement stations with CMAs. Not all AQHI 
+measurement stations are located within a CMA, and not all CMAs contain an AQHI
+measurement station—these incomplete measurements are excluded from our data. 
+Additionally, when a CMA contained multiple AQHI measurement stations, their
+daily averages were combined. Having combined and organized our daily average 
+AQHI data by CMA, we then calculated each CMA's annual average AQHI and 
+percentage of daily average AQHI values greater than 3. Days without any AQHI
+reading were omitted from the calculation of these averages. One CMA, Brandon, 
+was ommitted because it had less than 100 days of collected AQHI data, introducing
+potential seasonal bias in AQHI measurement. We have chosen average AQHI as our
+independent variable of interest.
+
+Demographic data about every CMA was collected from Environics Analytics’ 2024 
+Demographic Estimates \& Projections (Environics Analytics, 2024). Official census 
+data for 2024 does
+not exist, but this dataset—which was created ``in conjunction with experts at 
+The Centre for Spatial Economics"—is one of the best available projections of
+Canadian demographic data (Environics Analytics, 2024). It was derived from 
+Statistics Canada’s 2021
+Census data and made available through the SimplyAnalytics platform. We chose to
+collect the following 2024 data about every CMA:
+\begin{itemize}
+  \item Mean Income (\$)
+  \item Median Household Income (\$)
+  \item Percent of Households with Household Income \$100,000 or Over (\%)
+  \item Percent of Households with a Household Income of \$100,000 or Over with a
+  Household Income of \$200,000 or Over (\%)
+  \item Percent of Households with a Household Income of \$200,000 or Over with a
+  Household Income of \$300,000 or Over (\%)
+  \item Percent Male Population (\%)
+  \item Percent of Population with Visible Minority Status (\%)
+  \item Percent of Population 15 Years or Over Married Or Living With A 
+  Common-Law Partner (\%)
+  \item Percent of Population without Knowledge of English or French (\%)
+  \item Percent Immigrant Population (\%)
+  \item Percent of Population 15 Years or Over in the Labour Force (\%)
+  \item Employment Rate (\%)
+  \item Percent of Population 15 Years or Over with a College, CEGEP or Other 
+  Non-University Certificate or Diploma (\%)
+  \item Percent of Population 15 Years or Over with a University Degree (\%)
+\end{itemize}
+
+The CMA demographic data does not include a measurement of income inequality. 
+The Gini Coefficient is a measure of income inequality $G \in [0,1]$, with $G=0$
+representing perfect income equality and $G=1$ representing maximum income 
+inequality. We have chosen the Gini Coefficient as our dependent variable. We 
+estimated the Gini Coefficient for each CMA population using the following 
+vector $I$ of 2024 demographic data:
+\begin{itemize}
+  \item $I_0$: Median Household Income
+  \item $I_1$: Percent of Households with Household Income \$100,000 or Over
+  \item $I_2$: Percent of Households with a Household Income of \$100,000 or Over with a
+  Household Income of \$200,000 or Over
+  \item $I_3$: Percent of Households with a Household Income of \$200,000 or Over with a
+  Household Income of \$300,000 or Over
+\end{itemize}
+From $I$ we can approximate the Lorenz Curve and corresponding Gini Coefficient
+of every CMA. We used a monotonically increasing cubic spline interpolation to
+generate a polynomial representing the income distribution of every CMA. The
+complete approximation process is detailed in Appendix A.
+
+Two CMAs were excluded from the dataset because of their Gini Coefficients: Wood
+Buffalo and Yellowknife. Both CMAs have very high mean incomes, which means that
+our upper bound of household income (\$300,000) is not sufficient to accurately
+estimate the Gini Coefficient.
+
+No noticable outliers are present in the remainder of our CMA demographic data.
+All other listed variables acted as control variables, and their purpose will be
+discussed further in our Model Specification section.
+
+\section{Summary Statistics}
+
+A map of all relevant AQHI measurement stations and CMAs is available in Appendix B.
+
+Table~\ref{tab:summary} provides descriptive statistics for the primary 
+variables employed in our empirical analysis. The table summarizes data from
+CMAs across Canada, including measures of income inequality, air quality,
+and demographic characteristics.
+
+The mean Gini coefficient is 0.383 with a standard deviation of 0.100, 
+reflecting variation in income inequality across CMAs. On average, 
+the daily Air Quality Health Index (AQHI) is 2.054, with high AQHI days 
+(those exceeding a value of 3) constituting approximately 19.44\% of the year. 
+Demographic and socioeconomic characteristics include the percentage of the 
+population that is male, a visible minority, married or in a common-law 
+relationship, employed, and the average income level. Including this data as
+as control variables in our regression will mitigate confounding factors and
+better isolate the relationship between air quality and income inequality.
+
+\begin{table}[htbp]\centering
+\caption{Census Metropolitan Areas: Key Variables ($n = 63$)}
+\label{tab:summary}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Variable} & \textbf{Mean} & \textbf{SD} & \textbf{Min} & \textbf{Max} \\
+\midrule
+Gini Coefficient & 0.383 & 0.100 & 0.142 & 0.586 \\
+Average AQHI & 2.054 & 0.287 & 1.455 & 2.689 \\
+High AQHI Days (\%) & 19.444 & 21.932 & 0.000 & 85.000 \\
+Average Income (\$) & 56,564.91 & 7,484.71 & 43,216.52 & 77,301.47 \\
+Male Population (\%) & 49.713 & 0.854 & 48.156 & 52.114 \\
+Visible Minority (\%) & 15.394 & 12.093 & 2.208 & 58.503 \\
+Married or Common-law (\%) & 56.331 & 2.444 & 48.760 & 61.884 \\
+No English or French (\%) & 0.902 & 1.091 & 0.074 & 5.639 \\
+Immigrant (\%) & 15.888 & 9.435 & 3.017 & 49.748 \\
+Labour Force (\%) & 51.357 & 4.267 & 42.844 & 62.069 \\
+Employment Rate (\%) & 91.359 & 2.212 & 82.300 & 96.600 \\
+College or Diploma (\%) & 20.529 & 3.822 & 14.092 & 28.680 \\
+University Degree (\%) & 23.312 & 7.478 & 11.039 & 40.393 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\\[1ex]
+\begin{tablenotes}
+!ADD DESCRIPTION
+\end{tablenotes}
+\begin{tablenotes}[Source]
+Environment and Climate Change Canada, 2025; Statistics Canada, 2021a;
+Statistics Canada, 2021b; \\Environics Analytics, 2024.
+\end{tablenotes}
+\end{table}
+
+It is helpful to understand the simple correlation between each of these variables.
+Table~\ref{tab:corr} displays the correlation between all considered variables.
+
+\begin{table}[htbp]\centering
+\caption{Census Metropolitan Areas: Variable Correlation ($n = 63$)}
+\label{tab:corr}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrrrrrrrrrr}
+\toprule
+\textbf{Variable} & \textbf{G.C.} & \textbf{A.A.} & \textbf{H.A.D.} & 
+\textbf{A.I.} & \textbf{M.P.} & \textbf{V.M.} &
+\textbf{M.C.} & \textbf{N.E.F.} & \textbf{I.} &
+\textbf{L.F.} & \textbf{E.R.} & \textbf{C.D.} &
+\textbf{U.D.}\\
+\midrule
+Gini Coefficient & --- & -0.224 & -0.267 & -0.879 & -0.551 & -0.475 & -0.277 & -0.302 & -0.527 
+& -0.726 & -0.397 & 0.467 & -0.444 \\
+Average AQHI &  & --- &  0.907 & 0.377 & 0.237 & 0.359 & 0.019 & 0.212 & 0.361 & 0.230 & -0.023
+& -0.109 & 0.069 \\
+High AQHI Days (\%) &  &  & --- & 0.407 & 0.288 & 0.393 & 0.085 & 0.233 & 0.431 & 0.244 & -0.009
+& -0.221 & 0.110 \\
+Average Income (\$) &  &  &  & --- & 0.471 & 0.360 & 0.329 & 0.114 & 0.405 & 0.649 & 0.363 &
+-0.446 & 0.370 \\
+Male Population (\%) &  &  &  &  &  --- & 0.192 & 0.240 & 0.178 & 0.185 & 0.461 & 0.184 & -0.379
+& -0.109 \\
+Visible Minority (\%) &  &  &  &  &  & --- & 0.042 & 0.880 & 0.971 & 0.550 & 0.135 & -0.474
+& 0.668 \\
+Married or Common-law (\%) &  &  &  &  &  &  & --- & 0.006 & 0.083 & 0.362 & 0.324 & -0.252
+& 0.001 \\
+No English or French (\%) &  &  &  &  &  & &  & --- & 0.835 & 0.354 & 0.089 & -0.416
+& 0.472 \\
+Immigrant (\%) &  &  &  &  &   &  &  &  & --- & 0.569 & 0.232 & -0.506 & 0.702 \\
+Labour Force (\%) &  &  &  &  &  &  &  &  &  & --- & 0.420 & -0.349 & 0.628 \\
+Employment Rate (\%) &  &  &  &  &  &  &  &  &  &  & --- & -0.286 &  0.255 \\
+College or Diploma (\%) &  &  &  &  &  &  &  &  &  &  &  & --- & -0.283 \\
+University Degree (\%) &  &  &  &  &  &  &  &  &  &  &  &  & --- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\\[1ex]
+\begin{tablenotes}
+!ADD DESCRIPTION
+\end{tablenotes}
+\begin{tablenotes}[Source]
+Environment and Climate Change Canada, 2025; Statistics Canada, 2021a;
+Statistics Canada, 2021b; \\Environics Analytics, 2024.
+\end{tablenotes}
+\end{table}
+
+We began by estimating a simple linear regression of income inequality 
+(Gini Coefficient) on average AQHI, as displayed in Figure~\ref{fig:gini_aqhi}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{aqhi_gini_plot.pdf}
+\caption{Scatterplot and Bivariate Regression of CMA Average AQHI and Gini Coefficient}
+\label{fig:gini_aqhi}
+\begin{figurenotes}
+!ADD DESCRIPTION
+\end{figurenotes}
+\begin{figurenotes}[Source]
+Environment and Climate Change Canada, 2025; Statistics Canada, 2021a;
+Statistics Canada, 2021b; \\Environics Analytics, 2024.
+\end{figurenotes}
+\end{figure}
+
+\pagebreak
+\section{Model Specification}
+
+\subsection{Main Model Specification}
+
+The core objective of this model is to estimate the effect of air quality (as 
+captured by AQHI) on income inequality (as measured by the Gini Coefficient)
+within CMAs. To investigate the relationship between air quality and income 
+inequality, we employ an ordinary least squares (OLS) regression model:
+\begin{equation}
+Gini_i=\beta_0+\beta_1 AQHI_i+\beta_2 AQHI_i \times IncomeCat_i
++\sum_{(k=1)}^{7} \beta_{k+2} W_{k,i}
++ \epsilon_i
+\end{equation}
+The dependent variable in this model is $Gini_i$, our estimation of the Gini
+Coefficient. The independent variable of interest is $AQHI_i$, which is the
+average daily AQHI in a given CMA. This captures typical air quality conditions,
+accounting for various types of pollutants (Government of Canada, 2021). This 
+model will directly test whether
+\emph{ceteris paribus} differences in air quality are associated with changes in
+the Gini Coefficient. For example, if the estimated coefficient $\beta_1$ on 
+$AQHI_i$ is significant and positive, that would indicate that worse air quality
+is correlated with higher income inequality within a CMA. We also have included 
+an interaction variable constructed from $AQHI_i \times IncomeCat_i$, which is a 
+categorical variable representing the mean income for a given CMA. We include 
+this variable because we expect air quality to effect income inequality 
+differently in places with higher or lower average incomes due to the heterogenous
+health impacts of air pollution (Deryugina et. al, 2021). Adding in this 
+interaction variable will not introduce endogeneity: mean income was not used in
+our calculation of the Gini coefficient, and the interaction variable only 
+accounts for changes in the effect of $AQHI_i$ on $Gini$ across different
+levels of average CMA income. Since we are not including average income directly,
+we have centered and categorized CMA mean incomes to make our interpretation of 
+the model more clear and avoid any problems caused by potential non-linearity in
+the interaction variable.
+
+Control variables are categorized into three main groups: socio-demographic, 
+economic, and educational control variables. Our chosen socio-demographic 
+variables are the percentage of males, the percentage of visible minorities, and
+the percentage of immigrants. There is higher male representation in industries
+like manufacturing, which are correlated with both air pollution and income
+inequality (Varechova et al., 2016). There are also higher concentrations of
+visible minorities and recent immigrants in low-income, high-pollution areas
+where income inequality is often the greatest (American Lung Association, 2023).
+We also include marital status: in lower-income regions, dual-income households
+often exhibit higher financial stability than single-income households (Pais et
+al., 2014). 
+
+Our chosen economic control variables are employment rate and labor force
+participation rate, which adjust for income polarization.
+
+Educational control variables are included to address barriers to economic 
+participation. We chose to include both the percentage of a CMA's population 
+aged 15 years or older who hold a University degree and the percentage of a
+CMA's population aged 15 years or older who hold a College, CEGEP or other 
+non-University certificate or diploma. We also chose to include the percentage
+of individuals in a CMA who do not speak English or French. While we considered 
+all of these variables as candidate control variables, we ultimately decided to
+omit two to account for high multicollinearity. The percentage of immigrants in total population
+has an extremely high correlation with both the percent of population with visible 
+minority status ($\rho = 0.971$) and the percent of population without knowledge
+of English or French ($\rho = 0.835$). As such, both of these control variables
+were not included in our regression.
+
+The error term represents unobserved factors influencing local income inequality
+that are not explicitly included in the model.
+
+
+\subsection{Model Variations}
+
+To ensure the validity of our results, we propose five alternative models.
+
+We first add $AQHI_i^2$ to our regression to account for a possible nonlinear effect of air
+quality on income inequality. Different levels of environmental exposure to poor
+air quality might be associated with varying health and economic consequences: by 
+including both a linear and a quadratic term, we can test whether the effects of
+higher pollutant concentrations follow a simple linear pattern or exhibit
+diminishing/increasing marginal effects (Banzhaf \& Walsh, 2008; Landrigan et. al, 2018).
+This gives us the following alternative model:
+\begin{equation}
+Gini_i=\beta_0+\beta_1 AQHI_i+\beta_2 AQHI_i^2 + \beta_3 AQHI_i \times IncomeCat_i
++\sum_{(k=1)}^{7} \beta_{k+3} W_{k,i}
++ \epsilon_i
+\end{equation}
+
+Next, we replace the interaction variable $AQHI_i \times IncomeCat_i$ with the
+quadratic term $AQHI_i^2$. This change tests whether AQHI’s effect on income inequality
+actually varies in CMAs with higher or lower average incomes: it's possible that
+a direct nonlinear effect of air quality on inequality is obscured by multicollinearity
+with the interaction variable. This gives us an alternative model:
+\begin{equation}
+Gini_i=\beta_0+\beta_1 AQHI_i+\beta_2 AQHI_i^2
++\sum_{(k=1)}^{7} \beta_{k+2} W_{k,i}
++ \epsilon_i
+\end{equation}
+
+Next, we remove the control variables for university degree attainment and 
+college, CEGEP or other non-university certificate or diploma attainment to verify
+that our results are not unduly influenced by the inclusion of education measures
+and that we are not overfitting our regression.
+This gives us the following alternative model:
+\begin{equation}
+Gini_i=\beta_0+\beta_1 AQHI_i+\beta_2 AQHI_i \times IncomeCat_i
++\sum_{(k=1)}^{5} \beta_{k+2} W_{k,i}
++ \epsilon_i
+\end{equation}
+
+Finally, we incorporate CMA fixed effects—census population designation and
+geographic size—to capture potential spatial heterogeneity. This approach address concerns
+that more populous or geographically large CMAs might differ in both pollution
+levels and income inequality. This gives us the two models of the form
+\begin{equation}
+Gini_i=\beta_0+\beta_1 AQHI_i+\beta_2 AQHI_i \times IncomeCat_i
++\sum_{(k=1)}^{8} \beta_{k+2} W_{k,i}
++ \epsilon_i
+\end{equation}
+which include a control variable for CMA designation and land area respectively.
+
+\section{Table of Results}
+!NEEDS UPDATE
+\begin{table}[!htbp] \centering 
+  \caption{Main vs. Robustness Checks on Determinants of Income Inequality Across Canadian CMAs ($n = 63$)} 
+  \label{tab:reg_results} 
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{\extracolsep{5pt}}lcccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{6}{c}{\textit{Dependent Variable: Gini Coefficient}} \\ 
+\cline{2-7} 
+\\[-1.8ex] & Main & Alt 1 & Alt 2 & Alt 3 & Alt 4 & Alt 5 \\ 
+\\[-1.8ex] Equation Number & (1) & (2) & (3) & (4) & (5)a & (5)b \\ 
+\hline \\[-1.8ex] 
+Intercept & 2.964$^{***}$ & 3.637$^{***}$ & 3.691$^{***}$ & 2.766$^{***}$ & 2.942$^{***}$ 
+& 2.940$^{***}$ \\
+ & (0.557) & (0.671) & (0.701) & (0.343) & (0.604) & (0.557) \\
+Average AQHI & 0.082$^{*}$ & $-$0.478 & $-$0.491 & 0.085$^{**}$ & 0.081$^{*}$ & 0.081$^{**}$ \\ 
+ & (0.031) & (0.269) & (0.357) & (0.028) & (0.031) & (0.028) \\ 
+(Average AQHI)$^2$ & --- & 0.137$^{*}$ & 0.117 & --- & --- & --- \\ 
+ &  & (0.064) & (0.085) & & & \\ 
+Male (\%) &  $-$0.046$^{***}$ & $-$0.048$^{***}$ & $-$0.039$^{**}$ & $-$0.042$^{***}$ 
+& $-$0.46$^{***}$ & $-$0.049$^{***}$\\ 
+ & (0.012) & (0.012) & (0.012) & (0.008) & (0.012) & (0.011) \\ 
+Immigrant (\%) & $-$0.002 & $-$0.002 & $-$0.001 & $-$0.002$^{*}$ & $-$0.002 & $-$0.001 \\ 
+ & (0.001) & (0.001) & (0.003) & (0.001) & (0.001) & (0.001) \\ 
+Married (\%) & 0.003 & 0.001 & $-$0.001 & 0.003 & 0.003 & 0.002\\ 
+ & (0.003) & (0.003) & (0.003) & (0.003) & (0.003) & (0.003) \\ 
+Employment Rate (\%) & $-$0.003 & $-$0.03 & $-$0.004 & $-$0.003 & $-$0.003 & $-$0.02 \\ 
+ & (0.003) & (0.003) & (0.003) & (0.003) & (0.003) & (0.003) \\ 
+University (\%) & $-$0.001 & $-$0.001 & $-$0.002 & --- & $-$0.001 & $-$0.001 \\ 
+ & (0.002) & (0.002) & (0.002) & & (0.002) & (0.002) \\ 
+College or Diploma (\%) & $-$0.001 & 0.000 & 0.003 & --- & $-$0.001 & 0.001 \\ 
+ & (0.002) & (0.002) & (0.003) & & (0.002) & (0.002) \\ 
+Labour Force (\%) & $-$0.003 & $-$0.003 & $-$0.008$^{*}$ & -0.004 & $-$0.004 & $-$0.003 \\ 
+ & (0.003) & (0.003) & (0.003) & (0.002) & (0.003) & (0.003) \\ 
+Average AQHI: Medium Income & $-$0.032$^{***}$ & $-$0.030$^{***}$ & --- & $-$0.032$^{***}$ 
+& $-$0.033$^{***}$& $-$0.036$^{***}$\\ 
+ & (0.008) & (0.008) &  & (0.008) & (0.009) & (0.009) \\ 
+Average AQHI: High Income & $-$0.060$^{***}$ & $-$0.061$^{***}$ & --- & $-$0.060$^{***}$ 
+& $-$0.062$^{***}$ & $-$0.062$^{***}$\\ 
+ & (0.008) & (0.008) &  & (0.008) & (0.009) & (0.008)\\ 
+Region Fixed Effects & --- & --- & --- & --- & Designation & Land Area \\ 
+\\
+R$^{2}$ & 0.794 & 0.806 & 0.647 & 0.793 & 0.795 & 0.804\\ 
+Adjusted R$^{2}$ & 0.754 & 0.764 & 0.587 & 0.762 & 0.746 & 0.762\\ 
+\hline 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{adjustbox}
+\\[1ex]
+\begin{tablenotes}
+Robust standard errors are listed in parentheses. \\Coefficient estimate significance
+is indicated  as follows: $^{*}$ p $< 0.1$, $^{**}$ p 
+$< 0.05$, $^{***}$ p $< 0.01$.\\
+This table presents the results of OLS regressions
+analyzing the relationship between air quality (as measured by AQHI) and income 
+inequality (Gini coefficient) across Canadian Census Metropolitan Areas (CMAs). 
+The main model (Column 1) uses the average AQHI as the key independent variable,
+while alternative specifications (Columns 2–4) test robustness by replacing AQHI
+with the percent of days with high AQHI, dropping major outliers (Toronto and 
+Vancouver), and including region fixed effects, respectively. Across all models, 
+the share of male population and the percentage of visible minorities are 
+significantly and negatively associated with inequality. The adjusted R-squared 
+improves considerably with the inclusion of regional controls, suggesting that 
+location-based unobservables play a substantial role in explaining income inequality.\\
+\end{tablenotes}
+\begin{tablenotes}[Source]
+Environment and Climate Change Canada, 2025; Statistics Canada, 2021a;
+Statistics Canada, 2021b; \\Environics Analytics, 2024.
+\end{tablenotes}
+\end{table} 
+
+\section{Discussion}
+
+References here (manual or bibTeX). If you are using bibTeX, add your bib file 
+name in place of BibFile in the bibliography command.
+% Remove or comment out the next two lines if you are not using bibtex.
+\bibliographystyle{aea}
+\bibliography{BibFile}
+
+% The appendix command is issued once, prior to all appendices, if any.
+\appendix
+
+\section{A: Mathematical Analysis}
+
+$\beta_1$
+
+\end{document}
+

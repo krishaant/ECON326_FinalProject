@@ -61,13 +61,26 @@ ggplot(d, aes(x = percent_high_AQHI, y = Gini)) + #call ggplot, attach data
 Let's try other metrics of AQHI. This could work, but the high number of truncated values seem like a waste of data availability.
 
 ```{r}
-ggplot(d, aes(x = average_AQHI, y = Gini)) + #call ggplot, attach data
-  geom_point() + #scatterplot
+library(showtext)
+font_add("Times New Roman", "C:/Windows/Fonts/times.ttf")
+showtext_auto()
+```
+
+```{r,fig.width=8, fig.height=6, out.width="100%", out.height="100%", fig.align = "center", fig.cap.position ="bottom"}
+ggplot(d, aes(x = average_AQHI, y = Gini)) + #call ggplot, data
+  geom_point() + #scatterplot 
+  coord_cartesian(ylim = c(0, 0.75)) +
   labs(
-    title = "Scatterplot of Gini Coefficient vs. Average AQHI",
+    title = "Average AQHI and Gini Coefficient",
     x = "Average AQHI",
     y = "Gini Coefficient" #axis titles
-  ) + theme_minimal() + geom_smooth(method = "lm", se = TRUE, color = "blue") #simple regression
+  ) + theme_minimal(base_family = "Times New Roman") + 
+  theme(plot.title = element_text(hjust = 0.5, size = 16), plot.margin = margin(t = 5, r = 10, b = 5, l = 5)) +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") #simple regression 
+```
+
+```{r}
+ggsave("aqhi_gini_plot.pdf", width = 6, height = 4, device = cairo_pdf)
 ```
 
 Whoa, that data point seems wrong. Let's check out what is causing that:

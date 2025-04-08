@@ -84,6 +84,7 @@ d <- d |>
   summarise(mean_AQHI = mean(AQHI, na.rm = TRUE), .groups = "drop") #regroup by average daily AQHI for a CMA at a given day
 
 d <- d |>
+  filter(!is.na(mean_AQHI)) |>
   group_by(CMAUID, CMANAME) |> #group by CMA
   summarise(
     total_days = n(), #total days with data
@@ -91,6 +92,8 @@ d <- d |>
     percent_high_AQHI = (high_AQHI_days/total_days)*100, #% of days with high AQHI
     average_AQHI = sum(mean_AQHI, na.rm = TRUE)/total_days #average of daily AQHI averages
   )
+
+d <- d |> filter(total_days > 100) #filter out CMAs with too few observations, n=1
 
 d_Census <- d_Census |>
   rename(CMAUID=`Census Metro Area ID`) #change for merge
@@ -121,7 +124,11 @@ d <- d |> rename( #mass renaming
   employed = `% Household Population 15 Years or Over by Labour Force Activity | Employment Rate, 2024`,
   college = `% Household Population 15 Years or Over by Educational Attainment | Household Population 15 Years Or Over | College, CEGEP Or Other Non-University Certificate Or Diploma, 2024`,
   university = `% Household Population 15 Years or Over by Educational Attainment | Household Population 15 Years Or Over | University Degree, 2024`,
-  avg_income = `Household Population by Income (Current Year) | Average Income ($), 2024`
+  avg_income = `Household Population by Income (Current Year) | Average Income ($), 2024`,
+  english_only = `% Household Population by Knowledge of Official Language | Household Population For Knowledge Of Official Language | English Only, 2024`,
+  french_only = `% Household Population by Knowledge of Official Language | Household Population For Knowledge Of Official Language | French Only, 2024`,
+  language_Both = `% Household Population by Mother Tongue | Household Population For Mother Tongue | Multiple Languages | English & French, 2024`,
+  labor_force = `% Basics | Total Household Population 15 Years Or Over In The Labour Force, 2024`
 )
 
 placeholder_matrix <- matrix(NA, nrow = 2, ncol = 5, dimnames = list(c("x", "y"), paste0(1:5))) #placeholder matrix to be added to each CMA

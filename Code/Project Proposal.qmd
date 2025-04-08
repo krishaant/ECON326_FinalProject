@@ -197,7 +197,7 @@ ggplot() +
 ```{r,fig.width=12, fig.height=10, out.width="100%", out.height="100%", fig.align = "center", fig.cap = "Canadian Census Metropolitan Areas | Median Household Income (2024)", fig.cap.position ="bottom"}
 ggplot() +
   geom_sf(data = PR, fill = NA, color = "black", size = 0.8) +
-  geom_sf(data = d, aes(fill = `Households by Income (Current Year) | Median Household Income (Current Year $), 2024`), color = "black", size = 0.2) +  #color by median income
+  geom_sf(data = d, aes(fill = I0), color = "black", size = 0.2) +  #color by median income
   scale_fill_viridis_c(name = "Median Household Income", option = "viridis") + #color scale
   theme_minimal(base_family = "serif") + 
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + #center title and subtitle
