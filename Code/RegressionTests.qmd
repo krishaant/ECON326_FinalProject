@@ -83,6 +83,12 @@ ggplot(d, aes(x = average_AQHI, y = Gini)) + #call ggplot, data
 ggsave("aqhi_gini_plot.pdf", width = 6, height = 4, device = cairo_pdf)
 ```
 
+```{r}
+bivar <- lm(Gini ~ average_AQHI, data = d)
+
+summary(bivar)
+```
+
 Whoa, that data point seems wrong. Let's check out what is causing that:
 
 ```{r}
