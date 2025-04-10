@@ -18,3 +18,6 @@ more: https://www150.statcan.gc.ca/n1/pub/92-195-x/2011001/geo/cma-rmr/def-eng.h
 
 LANDAREA reference:
 https://www150.statcan.gc.ca/n1/pub/92-160-g/2021001/tbl/tbl_4.1-eng.htm
+
+projection:
+https://epsg.io/3347

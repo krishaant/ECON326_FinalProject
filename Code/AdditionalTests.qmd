@@ -38,7 +38,7 @@ library(lmtest)
 ```
 
 ```{r}
-mainreg <- lm(Gini ~ average_AQHI + average_AQHI:income_cat + male + immigrant + married + employed + labor_force + LANDAREA, data = d)
+mainreg <- lm(Gini ~ average_AQHI + average_AQHI:income_cat + male + married+ immigrant  + employed + labor_force + LANDAREA, data = d)
 
 summary(mainreg)
 coeftest(mainreg, vcov = vcovHC(mainreg, type = "HC1"))
@@ -75,7 +75,7 @@ coeftest(altreg5, vcov = vcovHC(altreg5, type = "HC1"))
 
 ```{r}
 d |>
-  select(Gini, average_AQHI, high_AQHI_days, avg_income, male, vismin, married, not_eng_fr, immigrant, labor_force, employed, LANDAREA) |>
+  select(Gini, average_AQHI, high_AQHI_days, avg_income, male, vismin, married, not_eng_fr, immigrant, employed, labor_force, LANDAREA) |>
   na.omit() |>
   cor()
 ```
@@ -85,4 +85,34 @@ altreg6 <- lm(Gini ~ average_AQHI + average_AQHI:income_cat + male + immigrant +
 
 summary(altreg6)
 coeftest(altreg6, vcov = vcovHC(altreg6, type = "HC1"))
+```
+
+Validation tests
+
+```{r}
+resettest(mainreg, power = 2:3, type = "fitted")
+```
+
+```{r}
+vif(mainreg, type = "predictor")
+```
+
+```{r}
+library(whitestrap)
+```
+
+```{r}
+white_test(mainreg)
+```
+
+quantile regression
+
+```{r}
+library(quantreg)
+```
+
+```{r}
+model_quantile <- rq(Gini ~ average_AQHI + average_AQHI:income_cat + male + married + immigrant  + employed + labor_force + LANDAREA, data = d, tau = 0.5)
+
+summary(model_quantile)
 ```
