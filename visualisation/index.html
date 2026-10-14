@@ -25,6 +25,11 @@
   .slider-row { margin-top: 10px; }
   .slider-row label { display: block; font-size: 11px; color: #999; margin-bottom: 2px; }
   input[type=range] { width: 100%; }
+  #about { margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 8px; }
+  #about summary { cursor: pointer; font-size: 12px; color: #9cf; }
+  #about summary:hover { color: #cdf; }
+  #about-body p { font-size: 12px; color: #bbb; margin: 8px 0 0; }
+  #about-body b { color: #eee; }
   #tooltip {
     position: absolute; z-index: 20; pointer-events: none;
     background: rgba(20,20,20,0.92); color: #eee; padding: 8px 10px;
@@ -49,6 +54,16 @@
   <div class="slider-row">
     <label><input type="checkbox" id="stations-toggle" checked style="width:auto; vertical-align:middle;"> Show AQHI stations</label>
   </div>
+  <details id="about">
+    <summary>What am I looking at?</summary>
+    <div id="about-body">
+      <p><b>Each column is a Canadian city</b> (a Census Metropolitan Area, or CMA, Statistics Canada's definition of a city and its surrounding commuter area).</p>
+      <p><b>Height = air pollution.</b> AQHI (Air Quality Health Index) is Canada's official 1 to 10+ scale for how polluted the air is. Taller column means worse average air quality in 2024.</p>
+      <p><b>Color = income inequality.</b> The Gini coefficient measures how evenly income is spread across a population, from 0 (everyone earns the same) to 1 (one person has all the income). Redder means more inequality in that city.</p>
+      <p><b>The small spikes</b> are individual air quality monitoring stations, not cities.</p>
+      <p><b>The finding:</b> cities with worse air quality tend to have higher income inequality, and the effect is strongest in lower-income cities.</p>
+    </div>
+  </details>
 </div>
 <div id="tooltip"></div>
 <div id="source-note">Data: Environment and Climate Change Canada, Statistics Canada 2021 Census, Environics Analytics 2024</div>
