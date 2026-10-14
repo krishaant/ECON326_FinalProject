@@ -47,3 +47,12 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# LaTeX build artifacts
+*.log
+*.synctex.gz
+*.aux
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
