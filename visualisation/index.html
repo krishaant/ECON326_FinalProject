@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Air Quality and Income Inequality: 3D Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #111; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  #panel {
+    position: absolute; top: 16px; left: 16px; z-index: 10;
+    background: rgba(20,20,20,0.85); color: #eee; padding: 14px 16px;
+    border-radius: 10px; width: 250px; font-size: 13px; line-height: 1.5;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  #panel h1 { font-size: 15px; margin: 0 0 6px; font-weight: 600; }
+  #panel p { margin: 4px 0; color: #ccc; }
+  .legend-row { display: flex; align-items: center; margin-top: 10px; }
+  .legend-grad {
+    width: 100%; height: 10px; border-radius: 4px;
+    background: linear-gradient(to right, rgb(255,255,204), rgb(254,204,92), rgb(253,141,60), rgb(227,26,28), rgb(128,0,38));
+  }
+  .legend-labels { display: flex; justify-content: space-between; font-size: 11px; color: #999; margin-top: 2px; }
+  .slider-row { margin-top: 10px; }
+  .slider-row label { display: block; font-size: 11px; color: #999; margin-bottom: 2px; }
+  input[type=range] { width: 100%; }
+  #tooltip {
+    position: absolute; z-index: 20; pointer-events: none;
+    background: rgba(20,20,20,0.92); color: #eee; padding: 8px 10px;
+    border-radius: 6px; font-size: 12px; line-height: 1.5; display: none;
+    max-width: 220px;
+  }
+  #tooltip b { font-size: 13px; }
+  #source-note { position: absolute; bottom: 8px; left: 16px; z-index: 10; font-size: 10px; color: #888; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <h1>Air quality and income inequality</h1>
+  <p>Canadian CMAs, 2024. Column height = Average AQHI. Column color = Gini coefficient.</p>
+  <div class="legend-row"><div class="legend-grad"></div></div>
+  <div class="legend-labels"><span id="gini-min">low</span><span>Gini coefficient</span><span id="gini-max">high</span></div>
+  <div class="slider-row">
+    <label>Elevation scale</label>
+    <input type="range" id="elev-slider" min="5000" max="60000" step="1000" value="25000">
+  </div>
+  <div class="slider-row">
+    <label><input type="checkbox" id="stations-toggle" checked style="width:auto; vertical-align:middle;"> Show AQHI stations</label>
+  </div>
+</div>
+<div id="tooltip"></div>
+<div id="source-note">Data: Environment and Climate Change Canada, Statistics Canada 2021 Census, Environics Analytics 2024</div>
+
+<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/deck.gl@8.9.35/dist.min.js"></script>
+<script>
+const COLOR_STOPS = [
+  [0.00, [255,255,204]],
+  [0.25, [254,204,92]],
+  [0.50, [253,141,60]],
+  [0.75, [227,26,28]],
+  [1.00, [128,0,38]]
+];
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function giniColor(gini, min, max) {
+  const t = Math.max(0, Math.min(1, (gini - min) / (max - min)));
+  for (let i = 0; i < COLOR_STOPS.length - 1; i++) {
+    const [t0, c0] = COLOR_STOPS[i];
+    const [t1, c1] = COLOR_STOPS[i + 1];
+    if (t >= t0 && t <= t1) {
+      const localT = (t - t0) / (t1 - t0);
+      return [
+        Math.round(lerp(c0[0], c1[0], localT)),
+        Math.round(lerp(c0[1], c1[1], localT)),
+        Math.round(lerp(c0[2], c1[2], localT)),
+        220
+      ];
+    }
+  }
+  return [150, 150, 150, 220];
+}
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+  center: [-96, 58],
+  zoom: 3,
+  pitch: 45,
+  bearing: -15,
+  antialias: true
+});
+
+let giniMin = 0.1, giniMax = 0.6;
+let elevationScale = 25000;
+let showStations = true;
+let cmaData = null;
+let stationData = null;
+
+const tooltip = document.getElementById('tooltip');
+
+function renderLayers() {
+  const layers = [];
+
+  if (cmaData) {
+    layers.push(new deck.GeoJsonLayer({
+      id: 'cma-layer',
+      data: cmaData,
+      extruded: true,
+      wireframe: true,
+      filled: true,
+      elevationScale: elevationScale,
+      getElevation: f => f.properties.average_AQHI - 1,
+      getFillColor: f => giniColor(f.properties.Gini, giniMin, giniMax),
+      getLineColor: [60, 60, 60, 150],
+      lineWidthMinPixels: 1,
+      pickable: true,
+      autoHighlight: true,
+      highlightColor: [255, 255, 255, 80],
+      onHover: info => {
+        if (info.object) {
+          const p = info.object.properties;
+          tooltip.style.display = 'block';
+          tooltip.style.left = (info.x + 12) + 'px';
+          tooltip.style.top = (info.y + 12) + 'px';
+          tooltip.innerHTML = `<b>${p.CMANAME}</b><br>
+            Average AQHI: ${p.average_AQHI}<br>
+            Gini coefficient: ${p.Gini}<br>
+            Average income: $${Number(p.avg_income_dollars).toLocaleString()}<br>
+            Income tier: ${p.income_cat}`;
+        } else {
+          tooltip.style.display = 'none';
+        }
+      }
+    }));
+  }
+
+  if (stationData && showStations) {
+    layers.push(new deck.ColumnLayer({
+      id: 'station-layer',
+      data: stationData.features,
+      diskResolution: 12,
+      radius: 2500,
+      extruded: true,
+      getElevation: 6000,
+      getPosition: f => f.geometry.coordinates,
+      getFillColor: [150, 220, 255, 210],
+      getLineColor: [255,255,255,150],
+      lineWidthMinPixels: 1,
+      pickable: true,
+      onHover: info => {
+        if (info.object) {
+          const p = info.object.properties;
+          tooltip.style.display = 'block';
+          tooltip.style.left = (info.x + 12) + 'px';
+          tooltip.style.top = (info.y + 12) + 'px';
+          tooltip.innerHTML = `<b>AQHI station</b><br>${p.CMANAME}`;
+        } else if (!cmaData || !layers.length) {
+          tooltip.style.display = 'none';
+        }
+      }
+    }));
+  }
+
+  overlay.setProps({ layers });
+}
+
+const overlay = new deck.MapboxOverlay({ layers: [] });
+map.addControl(overlay);
+map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+Promise.all([
+  fetch('data/cma.geojson').then(r => r.json()),
+  fetch('data/stations.geojson').then(r => r.json())
+]).then(([cma, stations]) => {
+  cmaData = cma;
+  stationData = stations;
+
+  const ginis = cma.features.map(f => f.properties.Gini);
+  giniMin = Math.min(...ginis);
+  giniMax = Math.max(...ginis);
+  document.getElementById('gini-min').textContent = giniMin.toFixed(2);
+  document.getElementById('gini-max').textContent = giniMax.toFixed(2);
+
+  renderLayers();
+}).catch(err => {
+  document.getElementById('panel').innerHTML +=
+    '<p style="color:#f88">Failed to load data/*.geojson. Serve this folder over HTTP (not file://) - e.g. run: python3 -m http.server</p>';
+  console.error(err);
+});
+
+document.getElementById('elev-slider').addEventListener('input', e => {
+  elevationScale = Number(e.target.value);
+  renderLayers();
+});
+document.getElementById('stations-toggle').addEventListener('change', e => {
+  showStations = e.target.checked;
+  renderLayers();
+});
+</script>
+</body>
+</html>
