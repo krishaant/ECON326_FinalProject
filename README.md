@@ -1,15 +1,14 @@
 # Air Quality and Income Inequality: Canadian Metropolitan Areas
 
-**Authors:** Aiden Cathcart, Jiaqi Lei, Krishaant Pathmanathan, and Zane Williams
-University of British Columbia, Department of Economics
+This paper was presented at the London School of Economic's Knowledge Beyond Boundaries interdisciplinary research conference (Jun 2025)
 
 [Read the full paper (PDF)](Code/AirQualityIncomeInequality.pdf)
 
 ## Overview
 
-This paper asks whether air pollution has a measurable effect on income inequality across Canadian Census Metropolitan Areas (CMAs). Prior literature finds that stringent air quality regulation is associated with *higher* income inequality, but that relationship could be confounded: areas with poor air quality are often the same areas subject to the strictest regulation. If poor air quality itself destabilizes income distribution, regulation may be getting blamed for an effect it's actually mitigating.
+We test: is air pollution associated with higher income inequality within Canadian Metropolitan Areas (CMAs)?
 
-We test this directly: is air pollution associated with higher income inequality within Canadian CMAs?
+Prior literature finds that stringent air quality regulation is associated with *higher* income inequality, but that relationship could be confounded: areas with poor air quality are often the same areas subject to the strictest regulation. If poor air quality itself destabilizes income distribution, regulation may be getting blamed for an effect it's actually mitigating.
 
 ## Key Findings
 
