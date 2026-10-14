@@ -2,7 +2,7 @@
 
 This paper was presented at the London School of Economic's Knowledge Beyond Boundaries interdisciplinary research conference (Jun 2025)
 
-[Read the full paper (PDF)](Code/AirQualityIncomeInequality.pdf)
+[Read the full paper (PDF)](Code/AirQualityIncomeInequality.pdf) · [Play with the interactive 3D map](https://krishaant.github.io/ECON326_FinalProject/)
 
 ## Overview
 
@@ -19,6 +19,12 @@ Prior literature finds that stringent air quality regulation is associated with 
 <p align="center">
   <img src="Code/images/aqhi_gini_plot.png" width="650" alt="Scatterplot of Average AQHI against Gini Coefficient across 63 Canadian CMAs, with fitted regression line">
 </p>
+
+## Interactive 3D map
+
+**[krishaant.github.io/ECON326_FinalProject](https://krishaant.github.io/ECON326_FinalProject/)**
+
+Each column is a Canadian city, extruded by Average AQHI and colored by Gini coefficient. Built with deck.gl and MapLibre GL, source in [`visualisation/`](visualisation/).
 
 ## Data
 
