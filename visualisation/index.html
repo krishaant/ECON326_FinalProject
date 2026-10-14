@@ -49,7 +49,7 @@
   <div class="legend-labels"><span id="gini-min">low</span><span>Gini coefficient</span><span id="gini-max">high</span></div>
   <div class="slider-row">
     <label>Elevation scale</label>
-    <input type="range" id="elev-slider" min="5000" max="60000" step="1000" value="25000">
+    <input type="range" id="elev-slider" min="20000" max="200000" step="5000" value="90000">
   </div>
   <div class="slider-row">
     <label><input type="checkbox" id="stations-toggle" checked style="width:auto; vertical-align:middle;"> Show AQHI stations</label>
@@ -57,11 +57,11 @@
   <details id="about">
     <summary>What am I looking at?</summary>
     <div id="about-body">
-      <p><b>Each column is a Canadian city</b> (a Census Metropolitan Area, or CMA, Statistics Canada's definition of a city and its surrounding commuter area).</p>
-      <p><b>Height = air pollution.</b> AQHI (Air Quality Health Index) is Canada's official 1 to 10+ scale for how polluted the air is. Taller column means worse average air quality in 2024.</p>
-      <p><b>Color = income inequality.</b> The Gini coefficient measures how evenly income is spread across a population, from 0 (everyone earns the same) to 1 (one person has all the income). Redder means more inequality in that city.</p>
-      <p><b>The small spikes</b> are individual air quality monitoring stations, not cities.</p>
+      <p><b>Each column is a Canadian city.</b></p>
+      <p><b>Height = air pollution</b> (taller means worse air quality).</p>
+      <p><b>Color = income inequality.</b> Redder means more inequality in that city. The Gini coefficient measures how evenly income is spread across a population, from 0 (everyone earns the same) to 1 (one person has all the income).</p>
       <p><b>The finding:</b> cities with worse air quality tend to have higher income inequality, and the effect is strongest in lower-income cities.</p>
+      <p>Your lungs and your bank account, it turns out, keep surprisingly similar company.</p>
     </div>
   </details>
 </div>
@@ -110,7 +110,9 @@ const map = new maplibregl.Map({
 });
 
 let giniMin = 0.1, giniMax = 0.6;
-let elevationScale = 25000;
+let aqhiMin = 1, aqhiMax = 3;
+const HEIGHT_EXPONENT = 1.7; // >1 stretches the gap between an average city and a genuinely bad one
+let elevationScale = 90000;
 let showStations = true;
 let cmaData = null;
 let stationData = null;
@@ -128,7 +130,10 @@ function renderLayers() {
       wireframe: true,
       filled: true,
       elevationScale: elevationScale,
-      getElevation: f => f.properties.average_AQHI - 1,
+      getElevation: f => Math.pow(
+        Math.max(0, (f.properties.average_AQHI - aqhiMin) / (aqhiMax - aqhiMin)),
+        HEIGHT_EXPONENT
+      ),
       getFillColor: f => giniColor(f.properties.Gini, giniMin, giniMax),
       getLineColor: [60, 60, 60, 150],
       lineWidthMinPixels: 1,
@@ -199,6 +204,10 @@ Promise.all([
   giniMax = Math.max(...ginis);
   document.getElementById('gini-min').textContent = giniMin.toFixed(2);
   document.getElementById('gini-max').textContent = giniMax.toFixed(2);
+
+  const aqhis = cma.features.map(f => f.properties.average_AQHI);
+  aqhiMin = Math.min(...aqhis);
+  aqhiMax = Math.max(...aqhis);
 
   renderLayers();
 }).catch(err => {
