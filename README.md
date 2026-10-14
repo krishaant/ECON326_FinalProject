@@ -26,6 +26,12 @@ Prior literature finds that stringent air quality regulation is associated with 
 
 Each column is a Canadian city, extruded by Average AQHI and colored by Gini coefficient. Built with deck.gl and MapLibre GL, source in [`visualisation/`](visualisation/).
 
+<p align="center">
+  <a href="https://krishaant.github.io/ECON326_FinalProject/">
+    <img src="visualisation/preview.png" width="650" alt="3D map of Vancouver Island and the BC Lower Mainland, with CMAs rendered as extruded columns colored by Gini coefficient">
+  </a>
+</p>
+
 ## Data
 
 | Source | Used for |
